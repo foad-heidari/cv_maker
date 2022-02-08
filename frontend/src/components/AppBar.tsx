@@ -1,23 +1,23 @@
-
 import React, { useState } from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 interface Pages {
   name: string;
   link: string;
 }
 
-const pages:Pages[] = [
+const pages: Pages[] = [
   {
     name: 'Home',
     link: '/'
@@ -26,8 +26,6 @@ const pages:Pages[] = [
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState<Element | null>(null);
-  const [anchorElUser, setAnchorElUser] = useState<Element | null>(null);
-
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };

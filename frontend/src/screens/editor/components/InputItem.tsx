@@ -1,9 +1,22 @@
-import { IconButton, ListItem, TextField, Grid, Paper, FormControl, Select, MenuItem, Accordion, AccordionSummary, Typography, AccordionDetails, SvgIconProps, InputLabel } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    FormControl,
+    Grid,
+    IconButton,
+    InputLabel,
+    MenuItem,
+    Select,
+    SvgIconProps,
+    TextField,
+    Typography,
+} from '@mui/material';
 import React, { SyntheticEvent } from 'react';
-import PsychologyIcon from '@mui/icons-material/Psychology';
+
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FieldDataType } from '../../../types/EditorTypes';
 
 interface InputProps {

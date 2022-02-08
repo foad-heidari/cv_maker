@@ -1,5 +1,5 @@
-
 import { Container, Divider, Typography } from '@mui/material';
+
 import TemplateCard from './componets/TemplateCard';
 
 export default function Home() {

@@ -1,26 +1,25 @@
-
 import {
     Button,
     Divider,
     Grid,
 } from '@mui/material';
+
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { FieldDataType } from '../../../types/EditorTypes';
 import InputItem from './InputItem';
 import React from 'react';
-import { FieldDataType } from '../../../types/EditorTypes';
-import PianoIcon from '@mui/icons-material/Piano';
 
-
-export default function InterestsCard() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, value: "guitar" }]);
+export default function SkillsCard() {
+    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, level: "60%", value: "Python" }]);
 
     const addNewField = () => {
         const newField: FieldDataType = { id: 2, level: "", value: "" }
         setInputs(prevArray => [...prevArray, newField])
     }
+
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem key={element.id} element={element} Icon={<PianoIcon sx={{ mr: 1 }} />} inputTitle="interest" hideLevel={true} />)}
+            {inputs.map((element: FieldDataType) => <InputItem key={element.id} element={element} inputTitle="skill" />)}
 
 
             <Divider sx={{ my: 2 }} />
@@ -31,7 +30,7 @@ export default function InterestsCard() {
                 alignItems="center"
             >
                 <Button onClick={addNewField} variant="outlined" startIcon={<AddCircleIcon />}>
-                    interest
+                    Skill
                 </Button>
             </Grid>
         </>

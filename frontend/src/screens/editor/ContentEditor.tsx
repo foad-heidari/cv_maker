@@ -1,8 +1,10 @@
-import { Box, Tabs, Tab, Typography } from '@mui/material';
-import InterestsCard from './components/InterestsCard';
-import SkillsCard from './components/SkillsCard';
-import { tabsClasses } from '@mui/material/Tabs';
+import { Box, Tab, Tabs } from '@mui/material';
+
+import Interests from './components/Interests';
+import Profile from './components/Profile';
 import React from 'react';
+import Skills from './components/Skills';
+import { tabsClasses } from '@mui/material/Tabs';
 
 interface TabPanelProps {
     children: any;
@@ -49,15 +51,19 @@ export default function ContentEditor() {
                         },
                     }}
                 >
+                    <Tab label="Profile" />
                     <Tab label="Skills" />
                     <Tab label="Interests" />
                 </Tabs>
 
                 <TabPanel value={value} index={0}>
-                    <SkillsCard />
+                    <Profile />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <InterestsCard />
+                    <Skills />
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <Interests />
                 </TabPanel>
             </Box>
         </>

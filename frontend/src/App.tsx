@@ -1,8 +1,10 @@
-import AppBar from './components/AppBar';
-import Home from './screens/home'
 import './app.css'
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import AppBar from './components/AppBar';
 import CVEditor from './screens/editor';
+import Home from './screens/home'
 import React from 'react';
 
 function App() {
@@ -10,10 +12,10 @@ function App() {
     <>
       <BrowserRouter>
         <AppBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="editor" element={<CVEditor />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="editor" element={<CVEditor />} />
+        </Routes>
       </BrowserRouter>
     </>
   );
