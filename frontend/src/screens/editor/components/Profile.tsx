@@ -5,7 +5,7 @@ import {
     Paper,
     TextField,
     Typography
-} from '@mui/material';
+} from "@mui/material";
 
 const profileFields = [
     "First Name",
@@ -15,7 +15,7 @@ const profileFields = [
     "Phone Number",
     "Website",
     "Email Address"
-]
+];
 
 export default function SkillsCard() {
     return (
@@ -49,7 +49,7 @@ export default function SkillsCard() {
             </Grid>
 
             {profileFields.map(item => (
-                <TextField sx={{ mb: 2 }} id="standard-basic" label={item} variant="standard" />
+                <TextField sx={{ mb: 2 }} key={item} id="standard-basic" label={item} variant="standard" />
             ))}
         </Paper>
     );

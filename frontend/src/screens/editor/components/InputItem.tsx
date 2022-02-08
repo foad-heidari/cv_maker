@@ -11,13 +11,13 @@ import {
     SvgIconProps,
     TextField,
     Typography,
-} from '@mui/material';
-import React, { SyntheticEvent } from 'react';
+} from "@mui/material";
+import React, { SyntheticEvent } from "react";
 
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FieldDataType } from '../../../types/EditorTypes';
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { FieldDataType } from "../../../types/EditorTypes";
 
 interface InputProps {
     inputTitle: string;
@@ -50,7 +50,7 @@ function InputItem(props: InputProps) {
             <AccordionDetails>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <TextField fullWidth value={value} onChange={(e) => { setValue(e.target.value) }} placeholder={`Enter your ${inputTitle}`} variant="standard" />
+                        <TextField fullWidth value={value} onChange={(e) => { setValue(e.target.value); }} placeholder={`Enter your ${inputTitle}`} variant="standard" />
                     </Grid>
                     {!hideLevel ?
                         <Grid item xs={12}>

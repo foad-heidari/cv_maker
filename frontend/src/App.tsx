@@ -1,11 +1,10 @@
-import './app.css'
+import "./app.css";
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import AppBar from './components/AppBar';
-import CVEditor from './screens/editor';
-import Home from './screens/home'
-import React from 'react';
+import AppBar from "./components/AppBar";
+import CVEditor from "./screens/editor";
+import Home from "./screens/home";
 
 function App() {
   return (

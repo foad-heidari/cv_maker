@@ -1,10 +1,10 @@
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from "@mui/material";
 
-import Interests from './components/Interests';
-import Profile from './components/Profile';
-import React from 'react';
-import Skills from './components/Skills';
-import { tabsClasses } from '@mui/material/Tabs';
+import React from "react";
+import { tabsClasses } from "@mui/material/Tabs";
+import Interests from "./components/Interests";
+import Profile from "./components/Profile";
+import Skills from "./components/Skills";
 
 interface TabPanelProps {
     children: any;
@@ -37,7 +37,7 @@ export default function ContentEditor() {
     const [value, setValue] = React.useState(0);
     return (
         <>
-            <Box sx={{ bgcolor: 'background.paper' }}>
+            <Box sx={{ bgcolor: "background.paper" }}>
                 <Tabs
                     value={value}
 
@@ -47,7 +47,7 @@ export default function ContentEditor() {
                     aria-label="CV Content tab"
                     sx={{
                         [`& .${tabsClasses.scrollButtons}`]: {
-                            '&.Mui-disabled': { opacity: 0.3 },
+                            "&.Mui-disabled": { opacity: 0.3 },
                         },
                     }}
                 >
