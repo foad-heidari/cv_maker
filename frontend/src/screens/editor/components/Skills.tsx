@@ -1,4 +1,3 @@
-import InputItem from "./InputItem";
 import {
     Button,
     Divider,
@@ -7,6 +6,7 @@ import {
 
 import React from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import InputItem from "./InputItem";
 import { FieldDataType } from "../../../types/EditorTypes";
 
 

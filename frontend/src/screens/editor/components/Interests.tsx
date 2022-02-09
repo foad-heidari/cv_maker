@@ -1,4 +1,3 @@
-import InputItem from "./InputItem";
 import {
     Button,
     Divider,
@@ -8,12 +7,9 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PianoIcon from "@mui/icons-material/Piano";
 
-
 import React from "react";
+import InputItem from "./InputItem";
 import { FieldDataType } from "../../../types/EditorTypes";
-
-
-
 
 
 export default function Interests() {

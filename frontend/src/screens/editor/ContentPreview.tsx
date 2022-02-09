@@ -1,4 +1,6 @@
+import BasicCVTemplate from "../../templates/basic";
+
 
 export default function ContentPreview() {
-  return <div>CV</div>;
+  return <BasicCVTemplate />;
 }

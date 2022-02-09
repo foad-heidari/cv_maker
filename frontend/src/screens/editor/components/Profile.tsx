@@ -41,7 +41,7 @@ export default function SkillsCard() {
 
                     </IconButton>
                     <Typography sx={{ width: "100%", textAlign: "center" }} variant="caption" display="block" gutterBottom>
-                        Selct the Photo
+                        Select a Photo
                     </Typography>
 
                 </label>
