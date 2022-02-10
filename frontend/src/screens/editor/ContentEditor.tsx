@@ -5,6 +5,11 @@ import { tabsClasses } from "@mui/material/Tabs";
 import Interests from "./components/Interests";
 import Profile from "./components/Profile";
 import Skills from "./components/Skills";
+import Languages from "./components/Languages";
+import Education from "./components/Education";
+import Projects from "./components/Projects";
+import Experiences from "./components/Experiences";
+
 
 interface TabPanelProps {
     children: any;
@@ -52,7 +57,11 @@ export default function ContentEditor() {
                     }}
                 >
                     <Tab label="Profile" />
+                    <Tab label="Experiences" />
+                    <Tab label="Projects" />
                     <Tab label="Skills" />
+                    <Tab label="Education" />
+                    <Tab label="Languages" />
                     <Tab label="Interests" />
                 </Tabs>
 
@@ -60,9 +69,21 @@ export default function ContentEditor() {
                     <Profile />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <Skills />
+                    <Experiences />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
+                    <Projects />
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    <Skills />
+                </TabPanel>
+                <TabPanel value={value} index={4}>
+                    <Education />
+                </TabPanel>
+                <TabPanel value={value} index={5}>
+                    <Languages />
+                </TabPanel>
+                <TabPanel value={value} index={6}>
                     <Interests />
                 </TabPanel>
             </Box>

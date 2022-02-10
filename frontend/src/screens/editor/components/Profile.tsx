@@ -8,13 +8,15 @@ import {
 } from "@mui/material";
 
 const profileFields = [
-    "First Name",
-    "Last Name",
+    "Full Name",
     "Subtitle",
     "Address",
+    "Email Address",
     "Phone Number",
     "Website",
-    "Email Address"
+    "Linkedin",
+    "Github",
+    "Twitter"
 ];
 
 export default function SkillsCard() {
@@ -49,8 +51,16 @@ export default function SkillsCard() {
             </Grid>
 
             {profileFields.map(item => (
-                <TextField sx={{ mb: 2 }} key={item} id="standard-basic" label={item} variant="standard" />
+                <TextField fullWidth sx={{ mb: 2 }} key={item} id="standard-basic" label={item} variant="standard" />
             ))}
+            <TextField
+                fullWidth
+                id="standard-multiline-static"
+                multiline
+                rows={4}
+                label="Career profile"
+                variant="standard"
+            />
         </Paper>
     );
 }

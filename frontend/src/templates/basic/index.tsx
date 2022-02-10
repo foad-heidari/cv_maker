@@ -6,6 +6,8 @@ import Languages from "./components/Languages";
 import SocialAndContact from "./components/SocialAndContact";
 import Interests from "./components/Interests";
 import Projects from "./components/Projects";
+import Experiences from "./components/Experiences";
+import Education from "./components/Education";
 
 export default function BasicCVTemplate() {
     return (
@@ -13,12 +15,14 @@ export default function BasicCVTemplate() {
             <Grid container spacing={2}>
                 <Grid sx={{ p: 5 }} xs={8}>
                     <CareerProfile />
+                    <Experiences />
                     <Projects />
                     <Skills />
                 </Grid>
                 <Grid xs={4} sx={{ bgcolor: "info.main" }}>
                     <ProfileBox />
                     <SocialAndContact />
+                    <Education />
                     <Languages />
                     <Interests />
                 </Grid>

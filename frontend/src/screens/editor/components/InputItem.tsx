@@ -21,15 +21,22 @@ import { FieldDataType } from "../../../types/EditorTypes";
 
 interface InputProps {
     inputTitle: string;
-    hideLevel?: boolean;
     element: FieldDataType;
-    Icon?: React.ReactElement<SvgIconProps>
+    hideLevel?: boolean;
+    showDescription?: boolean;
+    showDate?: boolean;
+    showItemName?: boolean;
+    showlocation?: boolean;
+    Icon?: React.ReactElement<SvgIconProps>;
 }
 
 function InputItem(props: InputProps) {
-    const { inputTitle, hideLevel, element, Icon } = props;
-    const [level, setLevel] = React.useState<string>(element.level ? element.level : "");
+    const { inputTitle, hideLevel, showDescription, showlocation, showItemName, showDate, element, Icon } = props;
+    const [level, setLevel] = React.useState(element.level);
     const [value, setValue] = React.useState(element.value);
+    const [description, setDescription] = React.useState(element.description);
+    const [startDate, setStartDate] = React.useState(element.startDate);
+    const [endDate, setEndDate] = React.useState(element.endDate);
     const [expanded, setExpanded] = React.useState(element.id);
 
 
@@ -50,7 +57,7 @@ function InputItem(props: InputProps) {
             <AccordionDetails>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <TextField fullWidth value={value} onChange={(e) => { setValue(e.target.value); }} placeholder={`Enter your ${inputTitle}`} variant="standard" />
+                        <TextField fullWidth value={value} onChange={(e) => { setValue(e.target.value); }} label={inputTitle} variant="standard" />
                     </Grid>
                     {!hideLevel ?
                         <Grid item xs={12}>
@@ -74,6 +81,69 @@ function InputItem(props: InputProps) {
                                 </Select>
                             </FormControl>
                         </Grid> : null
+                    }
+
+                    {showDate && <>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="standard-multiline-static"
+                                label="Start Date"
+                                value={startDate}
+                                onChange={(e) => setStartDate(e.target.value)}
+
+                                variant="standard"
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="standard-multiline-static"
+                                label="End Date"
+                                value={endDate}
+                                onChange={(e) => setEndDate(e.target.value)}
+                                variant="standard"
+                            />
+                        </Grid>
+                    </>
+                    }
+
+                    {showItemName &&
+                        <Grid item xs={12}>
+                            <TextField
+                                id="standard-multiline-static"
+                                label="Name"
+                                value={startDate}
+                                fullWidth
+                                onChange={(e) => setStartDate(e.target.value)}
+
+                                variant="standard"
+                            />
+                        </Grid>
+                    }
+                    {showlocation &&
+                        <Grid item xs={12}>
+                            <TextField
+                                id="standard-multiline-static"
+                                label="Location"
+                                value={endDate}
+                                fullWidth
+                                onChange={(e) => setEndDate(e.target.value)}
+                                variant="standard"
+                            />
+                        </Grid>
+                    }
+
+                    {showDescription && <Grid item xs={12}>
+                        <TextField
+                            id="standard-multiline-static"
+                            label="Description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            multiline
+                            rows={4}
+                            fullWidth
+                            variant="standard"
+                        />
+                    </Grid>
                     }
 
                     <Grid
