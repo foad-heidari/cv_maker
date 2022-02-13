@@ -8,6 +8,7 @@ import {
     InputLabel,
     MenuItem,
     Select,
+    SelectChangeEvent,
     SvgIconProps,
     TextField,
     Typography,
@@ -19,6 +20,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FieldDataType } from "../../../types/EditorTypes";
 
+
 interface InputProps {
     inputTitle: string;
     element: FieldDataType;
@@ -28,17 +30,32 @@ interface InputProps {
     showItemName?: boolean;
     showlocation?: boolean;
     Icon?: React.ReactElement<SvgIconProps>;
+    fieldsData: (data: FieldDataType) => void;
 }
 
 function InputItem(props: InputProps) {
-    const { inputTitle, hideLevel, showDescription, showlocation, showItemName, showDate, element, Icon } = props;
-    const [level, setLevel] = React.useState(element.level);
-    const [value, setValue] = React.useState(element.value);
-    const [description, setDescription] = React.useState(element.description);
-    const [startDate, setStartDate] = React.useState(element.startDate);
-    const [endDate, setEndDate] = React.useState(element.endDate);
+    const { inputTitle, hideLevel, showDescription, showlocation, showItemName, showDate, element, Icon, fieldsData } = props;
+    const [data, setData] = React.useState<FieldDataType>({
+        id: element.id,
+        name: element.name,
+        level: element.level,
+        description: element.description,
+        startDate: element.startDate,
+        endDate: element.endDate,
+        location: element.location,
+        company: element.company,
+    });
     const [expanded, setExpanded] = React.useState(element.id);
 
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent) => {
+        setData({
+            ...data, [e.target.name]: e.target.value
+        });
+        fieldsData({
+            ...data, [e.target.name]: e.target.value
+        });
+
+    };
 
     const handleChange = (panel: number) => (event: SyntheticEvent<Element, Event>, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : 0);
@@ -52,12 +69,12 @@ function InputItem(props: InputProps) {
 
             >
                 {Icon}
-                <Typography>{value}</Typography>
+                <Typography>{data.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <TextField fullWidth value={value} onChange={(e) => { setValue(e.target.value); }} label={inputTitle} variant="standard" />
+                        <TextField fullWidth name="name" value={data.name} onChange={(e) => changeHandler(e)} label={inputTitle} variant="standard" />
                     </Grid>
                     {!hideLevel ?
                         <Grid item xs={12}>
@@ -65,9 +82,9 @@ function InputItem(props: InputProps) {
                                 <InputLabel id="level-label">Level</InputLabel>
                                 <Select
                                     labelId="level-label"
-                                    id="level"
-                                    value={level}
-                                    onChange={(e) => setLevel(e.target.value)}
+                                    name="level"
+                                    value={data.level}
+                                    onChange={(e) => { changeHandler(e); }}
                                     label="Level"
                                 >
                                     <MenuItem value="">
@@ -86,20 +103,20 @@ function InputItem(props: InputProps) {
                     {showDate && <>
                         <Grid item xs={6}>
                             <TextField
-                                id="standard-multiline-static"
+                                name="startDate"
                                 label="Start Date"
-                                value={startDate}
-                                onChange={(e) => setStartDate(e.target.value)}
+                                value={data.startDate}
+                                onChange={(e) => changeHandler(e)}
 
                                 variant="standard"
                             />
                         </Grid>
                         <Grid item xs={6}>
                             <TextField
-                                id="standard-multiline-static"
+                                name="endDate"
                                 label="End Date"
-                                value={endDate}
-                                onChange={(e) => setEndDate(e.target.value)}
+                                value={data.endDate}
+                                onChange={(e) => changeHandler(e)}
                                 variant="standard"
                             />
                         </Grid>
@@ -109,24 +126,25 @@ function InputItem(props: InputProps) {
                     {showItemName &&
                         <Grid item xs={12}>
                             <TextField
-                                id="standard-multiline-static"
+                                name="company"
                                 label="Name"
-                                value={startDate}
+                                value={data.company}
                                 fullWidth
-                                onChange={(e) => setStartDate(e.target.value)}
+                                onChange={(e) => changeHandler(e)}
 
                                 variant="standard"
                             />
                         </Grid>
                     }
+
                     {showlocation &&
                         <Grid item xs={12}>
                             <TextField
-                                id="standard-multiline-static"
                                 label="Location"
-                                value={endDate}
+                                name="location"
+                                value={data.location}
                                 fullWidth
-                                onChange={(e) => setEndDate(e.target.value)}
+                                onChange={(e) => changeHandler(e)}
                                 variant="standard"
                             />
                         </Grid>
@@ -134,10 +152,10 @@ function InputItem(props: InputProps) {
 
                     {showDescription && <Grid item xs={12}>
                         <TextField
-                            id="standard-multiline-static"
+                            name="description"
                             label="Description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
+                            value={data.description}
+                            onChange={(e) => changeHandler(e)}
                             multiline
                             rows={4}
                             fullWidth

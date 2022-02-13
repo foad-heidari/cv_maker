@@ -1,7 +1,14 @@
 import { Box, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../redux/Store";
 
 
-export default function Interests() {
+const Interests: React.FC = () => {
+
+    const interests = useSelector(
+        (state: AppState) => state.interests.interests
+    );
+
     return (
         <Box
             color="white"
@@ -10,22 +17,17 @@ export default function Interests() {
             }}
         >
             <Typography fontWeight={600} textTransform="uppercase">Interests</Typography>
-            <Box>
-                <Typography variant="caption">
-                    Music
-                </Typography>
-            </Box>
-            <Box>
-                <Typography variant="caption">
-                    Swimming
-                </Typography>
-            </Box>
-            <Box>
-                <Typography variant="caption">
-                    Movies
-                </Typography>
-            </Box>
+            {interests?.map(item => (
+                <Box key={item.id}>
+                    <Typography variant="caption">
+                        {item.name}
+                    </Typography>
+                </Box>
+            ))}
+
         </Box>
 
     );
-}
+};
+
+export default Interests; 

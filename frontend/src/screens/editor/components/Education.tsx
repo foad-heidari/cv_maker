@@ -11,16 +11,23 @@ import { FieldDataType } from "../../../types/EditorTypes";
 
 
 export default function Education() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, description: "", value: "Accounting" }]);
+    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, description: "", name: "Accounting" }]);
 
     const addNewField = () => {
-        const newField: FieldDataType = { id: 2, level: "", value: "" };
+        const newField: FieldDataType = { id: 2, level: "", name: "" };
         setInputs(prevArray => [...prevArray, newField]);
     };
 
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem key={element.id} element={element} showItemName={true} showDate={true} showDescription={true} hideLevel={true} inputTitle="Education" />)}
+            {inputs.map((element: FieldDataType) => <InputItem
+                fieldsData={(data) => { console.log(data); }}
+
+                key={element.id}
+                element={element}
+                showItemName={true}
+                showDate={true}
+                showDescription={true} hideLevel={true} inputTitle="Education" />)}
 
             <Divider sx={{ my: 2 }} />
             <Grid

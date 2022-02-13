@@ -7,21 +7,44 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PianoIcon from "@mui/icons-material/Piano";
 
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../types/EditorTypes";
+import { AppState } from "../../../redux/Store";
+import { addInterest, updateInterest } from "../../../redux/actions/interestActions";
 
 
 export default function Interests() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, value: "guitar" }]);
+    const interests = useSelector(
+        (state: AppState) => state.interests.interests
+    );
+
+    const dispatch = useDispatch();
+
+    const updateInterestHandler = (data: FieldDataType) => {
+        dispatch(updateInterest({
+            id: data.id,
+            name: data.name,
+        }));
+    };
+
 
     const addNewField = () => {
-        const newField: FieldDataType = { id: 2, level: "", value: "" };
-        setInputs(prevArray => [...prevArray, newField]);
+        dispatch(addInterest({
+            id: 4,
+            name: "",
+        }));
     };
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem key={element.id} element={element} Icon={<PianoIcon sx={{ mr: 1 }} />} inputTitle="interest" hideLevel={true} />)}
+            {interests.map((element: FieldDataType) => <InputItem
+                fieldsData={(data) => updateInterestHandler(data)}
+                key={element.id}
+                element={element}
+                Icon={<PianoIcon sx={{ mr: 1 }} />}
+                inputTitle="interest"
+                hideLevel={true}
+            />)}
             <Divider sx={{ my: 2 }} />
             <Grid
                 container

@@ -11,16 +11,18 @@ import { FieldDataType } from "../../../types/EditorTypes";
 
 
 export default function Languages() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, level: "60%", value: "English" }]);
+    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, level: "60%", name: "English" }]);
 
     const addNewField = () => {
-        const newField: FieldDataType = { id: 2, level: "", value: "" };
+        const newField: FieldDataType = { id: 2, level: "", name: "" };
         setInputs(prevArray => [...prevArray, newField]);
     };
 
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem key={element.id} element={element} inputTitle="Language" />)}
+            {inputs.map((element: FieldDataType) => <InputItem
+                fieldsData={(data) => { console.log(data); }}
+                key={element.id} element={element} inputTitle="Language" />)}
             <Divider sx={{ my: 2 }} />
             <Grid
                 container

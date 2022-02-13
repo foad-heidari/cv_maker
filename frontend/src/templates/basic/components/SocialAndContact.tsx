@@ -5,9 +5,14 @@ import LanguageIcon from "@mui/icons-material/Language";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { useSelector } from "react-redux";
 import TextWithIcon from "./TextWithIcon";
+import { AppState } from "../../../redux/Store";
 
 export default function SocialAndContact() {
+    const profile = useSelector(
+        (state: AppState) => state.profile.profile
+    );
     return (
         <Box
             color="white"
@@ -15,12 +20,12 @@ export default function SocialAndContact() {
                 p: 2,
             }}
         >
-            <TextWithIcon text="foad.heidari.1377@gmail.com" icon={<MailIcon sx={{ fontSize: 15, mr: 1 }} />} />
-            <TextWithIcon text="0617568724" icon={<PhoneEnabledIcon sx={{ fontSize: 15, mr: 1 }} />} />
-            <TextWithIcon text="onlinenot.org" icon={<LanguageIcon sx={{ fontSize: 15, mr: 1 }} />} />
-            <TextWithIcon text="https://www.linkedin.com/in/foad-heidari-3566071ab/" icon={<LinkedInIcon sx={{ fontSize: 15, mr: 1 }} />} />
-            <TextWithIcon text="https://github.com/foad-heidari" icon={<GitHubIcon sx={{ fontSize: 15, mr: 1 }} />} />
-            <TextWithIcon text="@foad-heidari" icon={<TwitterIcon sx={{ fontSize: 15, mr: 1 }} />} />
+            <TextWithIcon text={profile.email_address} icon={<MailIcon sx={{ fontSize: 15, mr: 1 }} />} />
+            <TextWithIcon text={profile.phone_number} icon={<PhoneEnabledIcon sx={{ fontSize: 15, mr: 1 }} />} />
+            <TextWithIcon text={profile.website} icon={<LanguageIcon sx={{ fontSize: 15, mr: 1 }} />} />
+            <TextWithIcon text={profile.linkedin} icon={<LinkedInIcon sx={{ fontSize: 15, mr: 1 }} />} />
+            <TextWithIcon text={profile.github} icon={<GitHubIcon sx={{ fontSize: 15, mr: 1 }} />} />
+            <TextWithIcon text={profile.twitter} icon={<TwitterIcon sx={{ fontSize: 15, mr: 1 }} />} />
         </Box>
 
     );
