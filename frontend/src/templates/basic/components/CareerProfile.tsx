@@ -12,7 +12,7 @@ export default function CareerProfile() {
     return (
         <Box sx={{ mb: 4 }}>
             <SectionHeader icon={<PersonIcon fontSize="small" />} title="Career Profile" />
-            <Typography variant="body2">
+            <Typography sx={{ whiteSpace: "pre-line" }} variant="body2">
                 {profile.career_profile}
             </Typography>
         </Box>

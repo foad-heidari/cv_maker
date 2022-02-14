@@ -19,7 +19,7 @@ export interface ProfileState {
 
 export const initialProfileState: ProfileState = {
     profile: {
-        "full_name": "",
+        "full_name": "Foad Heidari",
         "subtitle": "Software Engineer",
         "address": "Netherlands",
         "email_address": "foad.heidari.1377@gmail.com",

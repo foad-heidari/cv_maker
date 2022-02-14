@@ -35,6 +35,7 @@ export default function Interests() {
             name: "",
         }));
     };
+
     return (
         <>
             {interests.map((element: FieldDataType) => <InputItem

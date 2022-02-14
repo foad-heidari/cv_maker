@@ -7,6 +7,7 @@ interface Props {
 
 export default function TextWithIcon(props: Props) {
     const { text, icon } = props;
+    if (!text) return null;
     return (
         <>
             <Box color="white">

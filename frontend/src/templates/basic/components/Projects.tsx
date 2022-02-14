@@ -11,14 +11,14 @@ export default function Projects() {
                 <Typography color="primary.main" variant="body2">
                     Onlinenot.org
                 </Typography>
-                <Typography sx={{ lineHeight: 1 }} variant="caption"> Free Guiat Tab and chord website base on (ReacJS, NodeJs, MongoDB)</Typography>
+                <Typography sx={{ lineHeight: 1, whiteSpace: "pre-line" }} variant="caption"> Free Guiat Tab and chord website base on (ReacJS, NodeJs, MongoDB)</Typography>
             </Box>
 
             <Box sx={{ mb: 2, lineHeight: 1 }}>
                 <Typography color="primary.main" variant="body2">
                     DjBooking
                 </Typography>
-                <Typography sx={{ lineHeight: 1 }} variant="caption">Free and open source booking package for django</Typography>
+                <Typography sx={{ lineHeight: 1, whiteSpace: "pre-line" }} variant="caption">Free and open source booking package for django</Typography>
             </Box>
 
         </Box>

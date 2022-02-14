@@ -6,23 +6,58 @@ import {
 
 import React from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../types/EditorTypes";
+import { AppState } from "../../../redux/Store";
+import { addExperience, updateExperience } from "../../../redux/actions/experienceActions";
 
 
 export default function Projects() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, description: "", name: "PESCheck" }]);
+    const experiences = useSelector(
+        (state: AppState) => state.experiences.experiences
+    );
+
+    const dispatch = useDispatch();
 
     const addNewField = () => {
-        const newField: FieldDataType = { id: 2, level: "", name: "" };
-        setInputs(prevArray => [...prevArray, newField]);
+        dispatch(addExperience({
+            id: 2,
+            name: "",
+            startDate: "",
+            endDate: "",
+            company: "",
+            location: "",
+            description: "",
+        }));
     };
+    const updateExperienceHandler = (data: FieldDataType) => {
+        dispatch(updateExperience({
+            id: data.id,
+            name: data.name,
+            startDate: data.startDate || "",
+            endDate: data.endDate || "",
+            company: data.company || "",
+            location: data.location || "",
+            description: data.description || "",
+        }
+        ));
+    };
+
 
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem
-                fieldsData={(data) => { console.log(data); }}
-                key={element.id} element={element} showlocation={true} showItemName={true} showDate={true} showDescription={true} hideLevel={true} inputTitle="Role" />)}
+            {experiences.map((element: FieldDataType) => <InputItem
+                fieldsData={(data) => updateExperienceHandler(data)}
+                key={element.id}
+                element={element}
+                showlocation={true}
+                showCompany={true}
+                showDate={true}
+                showDescription={true}
+                hideLevel={true}
+                inputTitle="Role"
+            />)}
 
             <Divider sx={{ my: 2 }} />
             <Grid

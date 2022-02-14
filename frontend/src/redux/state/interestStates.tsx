@@ -9,7 +9,7 @@ export interface InterestsState {
 }
 
 
-export const initialInterestsState = {
+export const initialInterestsState: InterestsState = {
     interests: [
         { id: 1, name: "Guitar" },
         { id: 2, name: "Swimming" },

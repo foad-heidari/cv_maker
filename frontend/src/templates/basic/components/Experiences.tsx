@@ -1,29 +1,41 @@
 import { Box, Typography } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 import { grey } from "@mui/material/colors";
+import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
+import { AppState } from "../../../redux/Store";
+
 
 export default function Experiences() {
+    const experiences = useSelector(
+        (state: AppState) => state.experiences.experiences
+    );
+
+    if (experiences.length < 1) return null;
+
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<WorkIcon fontSize="small" />} title="Experiences" />
-            <Box sx={{ mb: 2, lineHeight: 1 }}>
-                <Box>
-                    <Box
-                        display="flex"
-                        sx={{ justifyContent: "space-between" }}
-                    >
-                        <Typography fontWeight={500} variant="body2">
-                            Software Engineer
-                        </Typography>
-                        <Typography color={grey[600]} variant="caption">
-                            July 2018 - July 2020
-                        </Typography>
+            {experiences.map(item => {
+                return <Box key={item.id} sx={{ mb: 2, lineHeight: 1 }}>
+                    <Box>
+                        <Box
+                            display="flex"
+                            sx={{ justifyContent: "space-between" }}
+                        >
+                            <Typography fontWeight={500} variant="body2">
+                                {item.name}
+                            </Typography>
+                            <Typography color={grey[600]} variant="caption">
+                                {item.startDate} {item.endDate && ` - ${item.endDate}`}
+                            </Typography>
+                        </Box>
+                        <Typography color={grey[600]} variant="caption">{item.company} {item.location && `, ${item.location}`}</Typography>
                     </Box>
-                    <Typography color={grey[600]} variant="caption">- Pescheck, Enschede</Typography>
-                </Box>
-                <Typography variant="caption">Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</Typography>
-            </Box>
+                    <Typography sx={{ whiteSpace: "pre-line" }} variant="caption">{item.description}</Typography>
+                </Box>;
+            })}
+
         </Box>
     );
 }

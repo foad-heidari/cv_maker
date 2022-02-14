@@ -1,10 +1,10 @@
-import { Action } from "../actions/interestActions";
+import { InterestAction } from "../actions/interestActions";
 import { ADD_INTERST, initialInterestsState, InterestsState, UPDATE_INTERST } from "../state/interestStates";
 
 
 export const interestsReducer = (
     state: InterestsState = initialInterestsState,
-    action: Action
+    action: InterestAction
 ) => {
     switch (action.type) {
         case ADD_INTERST: {

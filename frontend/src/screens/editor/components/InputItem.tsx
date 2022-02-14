@@ -27,14 +27,14 @@ interface InputProps {
     hideLevel?: boolean;
     showDescription?: boolean;
     showDate?: boolean;
-    showItemName?: boolean;
+    showCompany?: boolean;
     showlocation?: boolean;
     Icon?: React.ReactElement<SvgIconProps>;
     fieldsData: (data: FieldDataType) => void;
 }
 
 function InputItem(props: InputProps) {
-    const { inputTitle, hideLevel, showDescription, showlocation, showItemName, showDate, element, Icon, fieldsData } = props;
+    const { inputTitle, hideLevel, showDescription, showlocation, showCompany, showDate, element, Icon, fieldsData } = props;
     const [data, setData] = React.useState<FieldDataType>({
         id: element.id,
         name: element.name,
@@ -123,7 +123,7 @@ function InputItem(props: InputProps) {
                     </>
                     }
 
-                    {showItemName &&
+                    {showCompany &&
                         <Grid item xs={12}>
                             <TextField
                                 name="company"

@@ -25,7 +25,7 @@ export default function Education() {
 
                 key={element.id}
                 element={element}
-                showItemName={true}
+                showCompany={true}
                 showDate={true}
                 showDescription={true} hideLevel={true} inputTitle="Education" />)}
 
