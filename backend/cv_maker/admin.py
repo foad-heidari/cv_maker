@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models.education import Education
+from .models.interest import Interest
+from .models.language import Language
+
+admin.site.register(Language)
+admin.site.register(Interest)
