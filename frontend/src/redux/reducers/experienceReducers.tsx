@@ -15,7 +15,7 @@ export const experiencesReducer = (
             };
         }
         case UPDATE_EXPERIENCE: {
-            const index = state.experiences.findIndex(experience => experience.id === action.payload.id);
+            const index = state.experiences.findIndex(item => item.id === action.payload.id);
             const newArray = [...state.experiences];
             newArray[index] = action.payload;
 

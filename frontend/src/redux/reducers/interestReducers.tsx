@@ -14,7 +14,7 @@ export const interestsReducer = (
             };
         }
         case UPDATE_INTERST: {
-            const index = state.interests.findIndex(interest => interest.id === action.payload.id);
+            const index = state.interests.findIndex(item => item.id === action.payload.id);
             const newArray = [...state.interests];
             newArray[index] = action.payload;
 

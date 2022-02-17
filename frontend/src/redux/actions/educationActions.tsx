@@ -3,7 +3,6 @@ import { ADD_EDUCATION, EducationType, UPDATE_EDUCATION } from "../state/educati
 export type EducationAction = { type: string; payload: EducationType };
 
 export const addEducation = (education: EducationType): EducationAction => {
-
     return {
         type: ADD_EDUCATION,
         payload: education,

@@ -3,6 +3,7 @@ import { devToolsEnhancer } from "redux-devtools-extension";
 import { educationsReducer } from "./reducers/educationReducers";
 import { experiencesReducer } from "./reducers/experienceReducers";
 import { interestsReducer } from "./reducers/interestReducers";
+import { languagesReducer } from "./reducers/languageReducers";
 import { profileReducer } from "./reducers/profileReducers";
 import { projectsReducer } from "./reducers/projectReducers";
 import { skillsReducer } from "./reducers/skillReducers";
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     projects: projectsReducer,
     skills: skillsReducer,
     educations: educationsReducer,
+    languages: languagesReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>
 export const store = createStore(rootReducer, devToolsEnhancer({}));

@@ -4,25 +4,44 @@ import {
     Grid,
 } from "@mui/material";
 
-import React from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../types/EditorTypes";
+import { addLanguage, updateLanguage } from "../../../redux/actions/languageActions";
+import { AppState } from "../../../redux/Store";
 
 
 export default function Languages() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, level: "60%", name: "English" }]);
+    const languages = useSelector(
+        (state: AppState) => state.languages.languages
+    );
 
-    const addNewField = () => {
-        const newField: FieldDataType = { id: 2, level: "", name: "" };
-        setInputs(prevArray => [...prevArray, newField]);
+    const dispatch = useDispatch();
+
+    const updateLanguageHandler = (data: FieldDataType) => {
+        dispatch(updateLanguage({
+            id: data.id,
+            name: data.name,
+            level: data.level || "",
+        }));
     };
 
+    const addNewField = () => {
+        dispatch(addLanguage({
+            id: 4,
+            name: "",
+            level: "",
+        }));
+    };
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem
-                fieldsData={(data) => { console.log(data); }}
-                key={element.id} element={element} inputTitle="Language" />)}
+            {languages.map((element: FieldDataType) => <InputItem
+                fieldsData={(data) => updateLanguageHandler(data)}
+                key={element.id}
+                element={element}
+                inputTitle="Language"
+            />)}
             <Divider sx={{ my: 2 }} />
             <Grid
                 container

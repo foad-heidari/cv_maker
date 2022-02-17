@@ -3,7 +3,6 @@ import { ADD_EXPERIENCE, ExperienceType, UPDATE_EXPERIENCE } from "../state/expe
 export type ExperienceAction = { type: string; payload: ExperienceType };
 
 export const addExperience = (experience: ExperienceType): ExperienceAction => {
-
     return {
         type: ADD_EXPERIENCE,
         payload: experience,

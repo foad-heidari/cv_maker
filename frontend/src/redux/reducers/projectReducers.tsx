@@ -14,7 +14,7 @@ export const projectsReducer = (
             };
         }
         case UPDATE_PROJECT: {
-            const index = state.projects.findIndex(project => project.id === action.payload.id);
+            const index = state.projects.findIndex(item => item.id === action.payload.id);
             const newArray = [...state.projects];
             newArray[index] = action.payload;
 

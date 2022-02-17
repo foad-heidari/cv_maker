@@ -16,7 +16,6 @@ export interface ExperienceState {
     experiences: ExperienceType[];
 }
 
-
 export const initialExperienceState: ExperienceState = {
     experiences: [
         {
