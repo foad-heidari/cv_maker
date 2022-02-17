@@ -1,5 +1,6 @@
+import { ADD_INTERST, UPDATE_INTERST } from "../actions/actionTypes";
 import { InterestAction } from "../actions/interestActions";
-import { ADD_INTERST, initialInterestsState, InterestsState, UPDATE_INTERST } from "../state/interestStates";
+import { initialInterestsState, InterestsState } from "../state/interestStates";
 
 
 export const interestsReducer = (
@@ -14,13 +15,10 @@ export const interestsReducer = (
             };
         }
         case UPDATE_INTERST: {
-            const index = state.interests.findIndex(item => item.id === action.payload.id);
-            const newArray = [...state.interests];
-            newArray[index] = action.payload;
-
             return {
                 ...state,
-                interests: newArray
+                interests: state.interests.map(item => item.id === action.payload.id
+                    ? action.payload : item)
             };
         }
         default:

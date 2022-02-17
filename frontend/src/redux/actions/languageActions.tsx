@@ -1,4 +1,5 @@
-import { ADD_LANGUAGE, LanguageType, UPDATE_LANGUAGE } from "../state/languageState";
+import { ADD_LANGUAGE, UPDATE_LANGUAGE } from "./actionTypes";
+import { LanguageType } from "../state/languageState";
 
 
 export type LanguageAction = { type: string; payload: LanguageType };

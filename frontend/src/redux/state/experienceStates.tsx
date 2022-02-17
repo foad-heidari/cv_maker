@@ -1,7 +1,3 @@
-export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
-export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
-
-
 export interface ExperienceType {
     id: number;
     name: string;

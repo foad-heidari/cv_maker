@@ -1,6 +1,3 @@
-export const ADD_EDUCATION = "ADD_EDUCATION";
-export const UPDATE_EDUCATION = "UPDATE_EDUCATION";
-
 export interface EducationType {
     id: number;
     name: string;

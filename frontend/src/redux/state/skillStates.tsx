@@ -1,7 +1,3 @@
-export const ADD_SKILL = "ADD_SKILL";
-export const UPDATE_SKILL = "UPDATE_SKILL";
-
-
 export interface SkillType {
     id: number;
     name: string;

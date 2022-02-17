@@ -3,8 +3,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import { grey } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
-import { AppState } from "../../../redux/Store";
-
+import { AppState } from "../../../../redux/Store";
 
 export default function Experiences() {
     const experiences = useSelector(

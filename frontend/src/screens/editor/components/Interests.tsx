@@ -28,7 +28,6 @@ export default function Interests() {
         }));
     };
 
-
     const addNewField = () => {
         dispatch(addInterest({
             id: 4,

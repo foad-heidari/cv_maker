@@ -1,5 +1,6 @@
+import { ADD_PROJECT, UPDATE_PROJECT } from "../actions/actionTypes";
 import { ProjectAction } from "../actions/prjectsActions";
-import { ADD_PROJECT, initialProjectState, UPDATE_PROJECT } from "../state/projectStates";
+import { initialProjectState } from "../state/projectStates";
 
 
 export const projectsReducer = (
@@ -14,13 +15,10 @@ export const projectsReducer = (
             };
         }
         case UPDATE_PROJECT: {
-            const index = state.projects.findIndex(item => item.id === action.payload.id);
-            const newArray = [...state.projects];
-            newArray[index] = action.payload;
-
             return {
                 ...state,
-                projects: newArray
+                projects: state.projects.map(item => item.id === action.payload.id
+                    ? action.payload : item)
             };
         }
         default:

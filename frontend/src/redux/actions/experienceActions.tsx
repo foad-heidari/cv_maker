@@ -1,4 +1,5 @@
-import { ADD_EXPERIENCE, ExperienceType, UPDATE_EXPERIENCE } from "../state/experienceStates";
+import { ADD_EXPERIENCE, UPDATE_EXPERIENCE } from "./actionTypes";
+import { ExperienceType } from "../state/experienceStates";
 
 export type ExperienceAction = { type: string; payload: ExperienceType };
 

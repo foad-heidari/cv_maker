@@ -1,6 +1,7 @@
 
+import { ADD_EXPERIENCE, UPDATE_EXPERIENCE } from "../actions/actionTypes";
 import { ExperienceAction } from "../actions/experienceActions";
-import { ADD_EXPERIENCE, initialExperienceState, UPDATE_EXPERIENCE } from "../state/experienceStates";
+import { initialExperienceState } from "../state/experienceStates";
 
 
 export const experiencesReducer = (
@@ -15,13 +16,10 @@ export const experiencesReducer = (
             };
         }
         case UPDATE_EXPERIENCE: {
-            const index = state.experiences.findIndex(item => item.id === action.payload.id);
-            const newArray = [...state.experiences];
-            newArray[index] = action.payload;
-
             return {
                 ...state,
-                experiences: newArray
+                experiences: state.experiences.map(item => item.id === action.payload.id
+                    ? action.payload : item)
             };
         }
         default:

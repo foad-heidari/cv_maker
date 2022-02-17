@@ -1,6 +1,5 @@
 import { Avatar, Box, SvgIconProps, Typography } from "@mui/material";
 
-
 interface Props {
     title: string,
     icon: React.ReactElement<SvgIconProps>

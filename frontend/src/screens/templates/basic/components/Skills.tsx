@@ -3,7 +3,7 @@ import RocketIcon from "@mui/icons-material/Rocket";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
 import LinearProgressItem from "./LinearProgressItem";
-import { AppState } from "../../../redux/Store";
+import { AppState } from "../../../../redux/Store";
 
 
 export default function Skills() {

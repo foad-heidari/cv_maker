@@ -1,4 +1,5 @@
-import { ADD_EDUCATION, EducationType, UPDATE_EDUCATION } from "../state/educationStates";
+import { ADD_EDUCATION, UPDATE_EDUCATION } from "./actionTypes";
+import { EducationType } from "../state/educationStates";
 
 export type EducationAction = { type: string; payload: EducationType };
 

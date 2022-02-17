@@ -1,8 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useSelector } from "react-redux";
-import { AppState } from "../../../redux/Store";
-
+import { AppState } from "../../../../redux/Store";
 
 export default function Languages() {
     const languages = useSelector(

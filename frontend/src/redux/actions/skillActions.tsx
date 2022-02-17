@@ -1,4 +1,5 @@
-import { ADD_SKILL, SkillType, UPDATE_SKILL } from "../state/skillStates";
+import { ADD_SKILL, UPDATE_SKILL } from "./actionTypes";
+import { SkillType } from "../state/skillStates";
 
 export type SkillAction = { type: string; payload: SkillType };
 

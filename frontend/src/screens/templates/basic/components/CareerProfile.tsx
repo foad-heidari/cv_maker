@@ -2,7 +2,8 @@ import { Box, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
-import { AppState } from "../../../redux/Store";
+import { AppState } from "../../../../redux/Store";
+
 
 export default function CareerProfile() {
     const profile = useSelector(

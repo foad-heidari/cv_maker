@@ -26,6 +26,7 @@ export default function Projects() {
             description: "",
         }));
     };
+
     const updateProjectHandler = (data: FieldDataType) => {
         dispatch(updateProject({
             id: data.id,

@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
-import { AppState } from "../../../redux/Store";
+import { AppState } from "../../../../redux/Store";
 
 
 export default function Projects() {

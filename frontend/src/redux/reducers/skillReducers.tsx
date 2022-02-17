@@ -1,5 +1,6 @@
+import { ADD_SKILL, UPDATE_SKILL } from "../actions/actionTypes";
 import { SkillAction } from "../actions/skillActions";
-import { ADD_SKILL, initialSkillState, UPDATE_SKILL } from "../state/skillStates";
+import { initialSkillState } from "../state/skillStates";
 
 export const skillsReducer = (
     state = initialSkillState,
@@ -13,13 +14,10 @@ export const skillsReducer = (
             };
         }
         case UPDATE_SKILL: {
-            const index = state.skills.findIndex(item => item.id === action.payload.id);
-            const newArray = [...state.skills];
-            newArray[index] = action.payload;
-
             return {
                 ...state,
-                skills: newArray
+                skills: state.skills.map(item => item.id === action.payload.id
+                    ? action.payload : item)
             };
         }
         default:

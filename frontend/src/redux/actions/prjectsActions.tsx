@@ -1,4 +1,5 @@
-import { ADD_PROJECT, ProjectType, UPDATE_PROJECT } from "../state/projectStates";
+import { ADD_PROJECT, UPDATE_PROJECT } from "./actionTypes";
+import { ProjectType } from "../state/projectStates";
 
 export type ProjectAction = { type: string; payload: ProjectType };
 

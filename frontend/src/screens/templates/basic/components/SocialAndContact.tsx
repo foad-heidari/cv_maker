@@ -7,7 +7,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { useSelector } from "react-redux";
 import TextWithIcon from "./TextWithIcon";
-import { AppState } from "../../../redux/Store";
+import { AppState } from "../../../../redux/Store";
+
 
 export default function SocialAndContact() {
     const profile = useSelector(

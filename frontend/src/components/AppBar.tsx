@@ -11,13 +11,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { NavBarPages } from "../types/EditorTypes";
 
-interface Pages {
-  name: string;
-  link: string;
-}
 
-const pages: Pages[] = [
+const pages: NavBarPages[] = [
   {
     name: "Home",
     link: "/"

@@ -1,4 +1,4 @@
-import BasicCVTemplate from "../../templates/basic";
+import BasicCVTemplate from "../templates/basic";
 
 
 export default function ContentPreview() {

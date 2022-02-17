@@ -4,7 +4,6 @@ import {
     Grid,
 } from "@mui/material";
 
-import React from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";

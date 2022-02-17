@@ -1,5 +1,6 @@
+import { ADD_LANGUAGE, UPDATE_LANGUAGE } from "../actions/actionTypes";
 import { LanguageAction } from "../actions/languageActions";
-import { ADD_LANGUAGE, initialLanguageState, LanguageState, UPDATE_LANGUAGE } from "../state/languageState";
+import { initialLanguageState, LanguageState } from "../state/languageState";
 
 
 export const languagesReducer = (
@@ -14,13 +15,10 @@ export const languagesReducer = (
             };
         }
         case UPDATE_LANGUAGE: {
-            const index = state.languages.findIndex(item => item.id === action.payload.id);
-            const newArray = [...state.languages];
-            newArray[index] = action.payload;
-
             return {
                 ...state,
-                languages: newArray
+                languages: state.languages.map(item => item.id === action.payload.id
+                    ? action.payload : item)
             };
         }
         default:

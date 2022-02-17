@@ -36,6 +36,7 @@ export default function SkillsCard() {
             value: e.target.value
         }));
     };
+
     return (
         <Paper sx={{ p: 2 }}>
             <Grid

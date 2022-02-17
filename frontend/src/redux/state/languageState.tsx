@@ -1,7 +1,3 @@
-export const ADD_LANGUAGE = "ADD_LANGUAGE";
-export const UPDATE_LANGUAGE = "UPDATE_LANGUAGE";
-
-
 export interface LanguageType {
     id: number;
     name: string;

@@ -1,5 +1,6 @@
+import { ADD_EDUCATION, UPDATE_EDUCATION } from "../actions/actionTypes";
 import { EducationAction } from "../actions/educationActions";
-import { ADD_EDUCATION, initialEducationState, UPDATE_EDUCATION } from "../state/educationStates";
+import { initialEducationState } from "../state/educationStates";
 
 export const educationsReducer = (
     state = initialEducationState,
@@ -13,13 +14,10 @@ export const educationsReducer = (
             };
         }
         case UPDATE_EDUCATION: {
-            const index = state.educations.findIndex(item => item.id === action.payload.id);
-            const newArray = [...state.educations];
-            newArray[index] = action.payload;
-
             return {
                 ...state,
-                educations: newArray
+                educations: state.educations.map(item => item.id === action.payload.id
+                    ? action.payload : item)
             };
         }
         default:

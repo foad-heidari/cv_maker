@@ -1,5 +1,6 @@
+import { UPDATE_PROFILE } from "../actions/actionTypes";
 import { ProfileAction } from "../actions/profileActions";
-import { initialProfileState, ProfileState, UPDATE_PROFILE } from "../state/ProfileStates";
+import { initialProfileState, ProfileState } from "../state/ProfileStates";
 
 
 export const profileReducer = (

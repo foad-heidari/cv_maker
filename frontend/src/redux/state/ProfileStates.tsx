@@ -1,6 +1,3 @@
-export const UPDATE_PROFILE = "UPDATE_PROFILE";
-
-
 export interface ProfileType {
     full_name: string;
     subtitle: string;

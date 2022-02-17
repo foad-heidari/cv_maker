@@ -1,4 +1,4 @@
-import { UPDATE_PROFILE } from "../state/ProfileStates";
+import { UPDATE_PROFILE } from "./actionTypes";
 
 export type ProfileAction = { type: string; payload: { name: string, value: string } };
 

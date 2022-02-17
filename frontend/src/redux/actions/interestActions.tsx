@@ -1,4 +1,5 @@
-import { ADD_INTERST, InterestType, UPDATE_INTERST } from "../state/interestStates";
+import { ADD_INTERST, UPDATE_INTERST } from "./actionTypes";
+import { InterestType } from "../state/interestStates";
 
 export type InterestAction = { type: string; payload: InterestType };
 
