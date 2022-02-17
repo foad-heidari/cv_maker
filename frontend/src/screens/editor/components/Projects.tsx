@@ -4,25 +4,46 @@ import {
     Grid,
 } from "@mui/material";
 
-import React from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../types/EditorTypes";
+import { AppState } from "../../../redux/Store";
+import { addProject, updateProject } from "../../../redux/actions/prjectsActions";
 
 
 export default function Projects() {
-    const [inputs, setInputs] = React.useState<FieldDataType[]>([{ id: 1, description: "some description", name: "DJBooking" }]);
+    const projects = useSelector(
+        (state: AppState) => state.projects.projects
+    );
+
+    const dispatch = useDispatch();
 
     const addNewField = () => {
-        const newField: FieldDataType = { id: 2, level: "", name: "" };
-        setInputs(prevArray => [...prevArray, newField]);
+        dispatch(addProject({
+            id: 3,
+            name: "",
+            description: "",
+        }));
+    };
+    const updateProjectHandler = (data: FieldDataType) => {
+        dispatch(updateProject({
+            id: data.id,
+            name: data.name,
+            description: data.description || "",
+        }
+        ));
     };
 
     return (
         <>
-            {inputs.map((element: FieldDataType) => <InputItem
-                fieldsData={(data) => { console.log(data); }}
-                key={element.id} element={element} showDescription={true} hideLevel={true} inputTitle="Project" />)}
+            {projects.map((element: FieldDataType) => <InputItem
+                fieldsData={(data) => updateProjectHandler(data)}
+                key={element.id}
+                element={element}
+                showDescription={true}
+                hideLevel={true}
+                inputTitle="Project" />)}
             <Divider sx={{ my: 2 }} />
             <Grid
                 container
