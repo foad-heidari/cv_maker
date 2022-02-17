@@ -1,16 +1,23 @@
 import { Box } from "@mui/material";
 import RocketIcon from "@mui/icons-material/Rocket";
+import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
 import LinearProgressItem from "./LinearProgressItem";
+import { AppState } from "../../../redux/Store";
+
 
 export default function Skills() {
+    const skills = useSelector(
+        (state: AppState) => state.skills.skills
+    );
+
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<RocketIcon fontSize="small" />} title="Skills" />
-            <LinearProgressItem value={80} text="Python" />
-            <LinearProgressItem value={100} text="Django" />
-            <LinearProgressItem value={70} text="ReactJs" />
-            <LinearProgressItem value={50} text="NodeJs" />
+            {skills.map(item => (
+                <LinearProgressItem key={item.id} value={Number(item.level)} text={item.name} />
+            ))}
+
         </Box>
     );
 }

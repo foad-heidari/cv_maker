@@ -2,7 +2,7 @@ import { ProjectAction } from "../actions/prjectsActions";
 import { ADD_PROJECT, initialProjectState, UPDATE_PROJECT } from "../state/projectStates";
 
 
-export const ProjectsReducer = (
+export const projectsReducer = (
     state = initialProjectState,
     action: ProjectAction
 ) => {

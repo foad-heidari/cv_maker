@@ -90,11 +90,11 @@ function InputItem(props: InputProps) {
                                     <MenuItem value="">
                                         <em>None</em>
                                     </MenuItem>
-                                    <MenuItem value="20%">20%</MenuItem>
-                                    <MenuItem value="40%">40%</MenuItem>
-                                    <MenuItem value="60%">60%</MenuItem>
-                                    <MenuItem value="80%">80%</MenuItem>
-                                    <MenuItem value="100%">100%</MenuItem>
+                                    <MenuItem value="20">20%</MenuItem>
+                                    <MenuItem value="40">40%</MenuItem>
+                                    <MenuItem value="60">60%</MenuItem>
+                                    <MenuItem value="80">80%</MenuItem>
+                                    <MenuItem value="100">100%</MenuItem>
                                 </Select>
                             </FormControl>
                         </Grid> : null
