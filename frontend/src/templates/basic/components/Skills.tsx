@@ -11,6 +11,7 @@ export default function Skills() {
         (state: AppState) => state.skills.skills
     );
 
+    if (skills.length < 1) return null;
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<RocketIcon fontSize="small" />} title="Skills" />

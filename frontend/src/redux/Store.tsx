@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
+import { educationsReducer } from "./reducers/educationReducers";
 import { experiencesReducer } from "./reducers/experienceReducers";
 import { interestsReducer } from "./reducers/interestReducers";
 import { profileReducer } from "./reducers/profileReducers";
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     experiences: experiencesReducer,
     projects: projectsReducer,
     skills: skillsReducer,
+    educations: educationsReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>
 export const store = createStore(rootReducer, devToolsEnhancer({}));

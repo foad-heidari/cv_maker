@@ -9,6 +9,7 @@ const Interests: React.FC = () => {
         (state: AppState) => state.interests.interests
     );
 
+    if (interests.length < 1) return null;
     return (
         <Box
             color="white"

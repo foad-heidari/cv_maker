@@ -10,6 +10,7 @@ export default function Projects() {
         (state: AppState) => state.projects.projects
     );
 
+    if (projects.length < 1) return null;
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<AccountTreeIcon fontSize="small" />} title="Projects" />
