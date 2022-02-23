@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { NavBarPages } from "../types/EditorTypes";
+import { NavBarPages } from "../utils/Types";
 
 
 const pages: NavBarPages[] = [

@@ -18,7 +18,7 @@ import React, { SyntheticEvent } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { FieldDataType } from "../../../types/EditorTypes";
+import { FieldDataType } from "../../../utils/Types";
 
 
 interface InputProps {
@@ -57,8 +57,8 @@ function InputItem(props: InputProps) {
 
     };
 
-    const handleChange = (panel: number) => (event: SyntheticEvent<Element, Event>, isExpanded: boolean) => {
-        setExpanded(isExpanded ? panel : 0);
+    const handleChange = (panel: string) => (event: SyntheticEvent<Element, Event>, isExpanded: boolean) => {
+        setExpanded(isExpanded ? panel : "");
     };
     return (
         <Accordion expanded={expanded === element.id} onChange={handleChange(element.id)}>

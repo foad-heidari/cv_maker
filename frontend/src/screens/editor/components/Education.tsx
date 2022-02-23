@@ -7,7 +7,7 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
-import { FieldDataType } from "../../../types/EditorTypes";
+import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
 import { addEducation, updateEducation } from "../../../redux/actions/educationActions";
 
@@ -21,7 +21,7 @@ export default function Education() {
 
     const addNewField = () => {
         dispatch(addEducation({
-            id: 2,
+            id: "2",
             name: "",
             startDate: "",
             endDate: "",

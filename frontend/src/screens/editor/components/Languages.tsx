@@ -7,7 +7,7 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
-import { FieldDataType } from "../../../types/EditorTypes";
+import { FieldDataType } from "../../../utils/Types";
 import { addLanguage, updateLanguage } from "../../../redux/actions/languageActions";
 import { AppState } from "../../../redux/Store";
 
@@ -29,7 +29,7 @@ export default function Languages() {
 
     const addNewField = () => {
         dispatch(addLanguage({
-            id: 4,
+            id: "4",
             name: "",
             level: "",
         }));

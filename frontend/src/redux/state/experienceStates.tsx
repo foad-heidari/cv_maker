@@ -1,5 +1,5 @@
 export interface ExperienceType {
-    id: number;
+    id: string;
     name: string;
     startDate: string;
     endDate: string;
@@ -15,7 +15,7 @@ export interface ExperienceState {
 export const initialExperienceState: ExperienceState = {
     experiences: [
         {
-            id: 1,
+            id: "1",
             name: "Full stack developer",
             startDate: "May 2019",
             endDate: "May 2020",

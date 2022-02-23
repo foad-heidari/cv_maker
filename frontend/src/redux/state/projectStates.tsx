@@ -1,5 +1,5 @@
 export interface ProjectType {
-    id: number;
+    id: string;
     name: string;
     description: string;
 }
@@ -11,14 +11,9 @@ export interface ProjectState {
 export const initialProjectState: ProjectState = {
     projects: [
         {
-            id: 1,
+            id: "1",
             name: "onlinenot.org new",
             description: "Free Guiat Tab and chord website base on (ReacJS, NodeJs, MongoDB)",
-        },
-        {
-            id: 2,
-            name: "DjBooking",
-            description: "Free and open source booking package for django",
         },
     ],
 };

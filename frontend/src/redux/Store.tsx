@@ -1,5 +1,8 @@
-import { combineReducers, createStore } from "redux";
-import { devToolsEnhancer } from "redux-devtools-extension";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import { cvReducer } from "./reducers/cvReducers";
+
 import { educationsReducer } from "./reducers/educationReducers";
 import { experiencesReducer } from "./reducers/experienceReducers";
 import { interestsReducer } from "./reducers/interestReducers";
@@ -16,6 +19,12 @@ const rootReducer = combineReducers({
     skills: skillsReducer,
     educations: educationsReducer,
     languages: languagesReducer,
+    cv: cvReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>
-export const store = createStore(rootReducer, devToolsEnhancer({}));
+
+const composedEnhancer = composeWithDevTools(
+    applyMiddleware(thunk)
+);
+
+export const store = createStore(rootReducer, composedEnhancer);

@@ -12,14 +12,14 @@ import Education from "./components/Education";
 export default function BasicCVTemplate() {
     return (
         <Paper sx={{ margin: "auto", flexGrow: 1 }}>
-            <Grid container spacing={2}>
-                <Grid sx={{ p: 5 }} xs={8}>
+            <Grid container spacing={0}>
+                <Grid item xs={8} sx={{ p: 3 }}>
                     <CareerProfile />
                     <Experiences />
                     <Projects />
                     <Skills />
                 </Grid>
-                <Grid xs={4} sx={{ bgcolor: "info.main" }}>
+                <Grid item xs={4} sx={{ bgcolor: "info.main" }}>
                     <ProfileBox />
                     <SocialAndContact />
                     <Education />

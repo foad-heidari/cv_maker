@@ -7,7 +7,7 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
 import InputItem from "./InputItem";
-import { FieldDataType } from "../../../types/EditorTypes";
+import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
 import { addSkill, updateSkill } from "../../../redux/actions/skillActions";
 
@@ -21,7 +21,7 @@ export default function Skills() {
 
     const addNewField = () => {
         dispatch(addSkill({
-            id: 3,
+            id: "3",
             name: "",
             level: "0",
         }));

@@ -1,6 +1,6 @@
 
 export interface FieldDataType {
-    id: number;
+    id: string;
     name: string;
     level?: string;
     description?: string;
