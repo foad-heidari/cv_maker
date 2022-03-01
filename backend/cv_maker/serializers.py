@@ -25,6 +25,14 @@ class InterestsSerializer(serializers.ModelSerializer):
 
 
 class CVSerializer(serializers.ModelSerializer):
+    interests = InterestsSerializer(
+        read_only=True, many=True, source="interest_set")
+    languages = LanguageSerializer(
+        read_only=True, many=True, source="language_set")
+    educations = EducationSerializer(
+        read_only=True, many=True, source="education_set")
+
     class Meta:
         model = CVModel
-        fields = ('id', 'status', )
+        # fields = ('id', 'status', 'interests')
+        fields = "__all__"
