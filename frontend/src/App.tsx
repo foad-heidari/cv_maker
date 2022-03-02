@@ -13,7 +13,7 @@ function App() {
         <AppBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="editor" element={<CVEditor />} />
+          <Route path="editor/:cvId" element={<CVEditor />} />
         </Routes>
       </BrowserRouter>
     </>

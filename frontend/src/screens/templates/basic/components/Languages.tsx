@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import { LanguageType } from "../../../../redux/state/languageState";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../../redux/Store";
 
@@ -17,7 +18,7 @@ export default function Languages() {
             }}
         >
             <Typography fontWeight={600} textTransform="uppercase">Languages</Typography>
-            {languages.map(item => (
+            {languages.map((item: LanguageType) => (
                 <Box key={item.id}>
                     <Typography variant="caption">
                         {item.name}

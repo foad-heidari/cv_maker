@@ -12,12 +12,6 @@ export interface EducationState {
 
 export const initialEducationState: EducationState = {
     educations: [
-        {
-            id: "1",
-            name: "Accounting",
-            startDate: "May 2019",
-            endDate: "May 2020",
-            company: "Bu ali sina",
-        },
+
     ],
 };

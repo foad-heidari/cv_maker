@@ -1,4 +1,4 @@
-import { ADD_EDUCATION, UPDATE_EDUCATION } from "../actions/actionTypes";
+import { ADD_EDUCATION, GET_EDUCATION, UPDATE_EDUCATION } from "../actions/actionTypes";
 import { EducationAction } from "../actions/educationActions";
 import { initialEducationState } from "../state/educationStates";
 
@@ -11,6 +11,12 @@ export const educationsReducer = (
             return {
                 ...state,
                 educations: [...state.educations, action.payload]
+            };
+        }
+        case GET_EDUCATION: {
+            return {
+                ...state,
+                educations: action.payload
             };
         }
         case UPDATE_EDUCATION: {

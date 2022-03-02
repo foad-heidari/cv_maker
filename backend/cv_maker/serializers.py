@@ -6,10 +6,13 @@ from rest_framework import serializers
 
 
 class EducationSerializer(serializers.ModelSerializer):
+    startDate = serializers.CharField(source="start_at")
+    endDate = serializers.CharField(source="end_at")
+
     class Meta:
         model = Education
         fields = ('id', 'cv', 'name', 'order',
-                  'company', 'start_at', 'end_at',)
+                  'company', 'startDate', 'endDate',)
 
 
 class LanguageSerializer(serializers.ModelSerializer):

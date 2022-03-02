@@ -10,10 +10,5 @@ export interface LanguageState {
 
 export const initialLanguageState: LanguageState = {
     languages: [
-        {
-            id: "1",
-            name: "English",
-            level: "80",
-        },
     ],
 };

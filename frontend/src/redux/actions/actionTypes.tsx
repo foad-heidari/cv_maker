@@ -1,4 +1,5 @@
 export const ADD_EDUCATION = "ADD_EDUCATION";
+export const GET_EDUCATION = "GET_EDUCATION";
 export const UPDATE_EDUCATION = "UPDATE_EDUCATION";
 
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
@@ -10,6 +11,7 @@ export const GET_INTERESTS = "GET_INTERESTS";
 
 
 export const ADD_LANGUAGE = "ADD_LANGUAGE";
+export const GET_LANGUAGE = "GET_LANGUAGE";
 export const UPDATE_LANGUAGE = "UPDATE_LANGUAGE";
 
 export const UPDATE_PROFILE = "UPDATE_PROFILE";

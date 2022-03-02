@@ -1,4 +1,4 @@
-import { ADD_CV } from "../actions/actionTypes";
+import { ADD_CV, GET_CV } from "../actions/actionTypes";
 import { CVAction } from "../actions/cvActions";
 import { initialCVState } from "../state/cvStates";
 
@@ -12,6 +12,13 @@ export const cvReducer = (
             return {
                 ...state,
                 cvs: [...state.cvs, action.payload]
+            };
+        }
+        case GET_CV: {
+            console.log(action.payload);
+            return {
+                ...state,
+                ...action.payload
             };
         }
         default:
