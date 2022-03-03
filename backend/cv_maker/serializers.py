@@ -48,9 +48,9 @@ class ProjectsSerializer(serializers.ModelSerializer):
 
 class ExperiencesSerializer(serializers.ModelSerializer):
     startDate = serializers.CharField(
-        source="start_at", allow_null=True, default="")
+        source="start_at", default="", allow_blank=True)
     endDate = serializers.CharField(
-        source="end_at", allow_null=True, default="")
+        source="end_at", default="", allow_blank=True)
 
     class Meta:
         model = Experiences
