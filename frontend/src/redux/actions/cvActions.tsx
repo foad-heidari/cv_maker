@@ -1,4 +1,4 @@
-import { ADD_CV, GET_CV, UPDATE_CV } from "./actionTypes";
+import { ADD_CV, GET_CVS, UPDATE_CV } from "./actionTypes";
 import { CVType } from "../state/cvStates";
 
 
@@ -6,7 +6,7 @@ export type CVAction = { type: string; payload: CVType };
 
 export const getCV = (cv: CVType): CVAction => {
     return {
-        type: GET_CV,
+        type: GET_CVS,
         payload: cv,
     };
 };

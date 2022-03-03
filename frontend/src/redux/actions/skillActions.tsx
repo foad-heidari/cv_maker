@@ -1,16 +1,22 @@
-import { ADD_SKILL, UPDATE_SKILL } from "./actionTypes";
+import { ADD_SKILL, GET_SKILLS, UPDATE_SKILL } from "./actionTypes";
 import { SkillType } from "../state/skillStates";
 
-export type SkillAction = { type: string; payload: SkillType };
+export type SkillAction = { type: string; payload: any };
 
-export const addSkill = (skill: SkillType): SkillAction => {
+
+export const addSkill = (payload: SkillType): SkillAction => {
     return {
         type: ADD_SKILL,
-        payload: skill,
+        payload: payload,
     };
 };
 
-export const updateSkill = (skill: SkillType): SkillAction => ({
+export const getSkills = (payload: SkillType): SkillAction => ({
+    type: GET_SKILLS,
+    payload: payload,
+});
+
+export const updateSkill = (payload: SkillType): SkillAction => ({
     type: UPDATE_SKILL,
-    payload: skill,
+    payload: payload,
 });

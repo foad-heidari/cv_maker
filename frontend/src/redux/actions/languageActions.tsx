@@ -1,4 +1,4 @@
-import { ADD_LANGUAGE, GET_LANGUAGE, UPDATE_LANGUAGE } from "./actionTypes";
+import { ADD_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "./actionTypes";
 import { LanguageType } from "../state/languageState";
 
 
@@ -10,7 +10,7 @@ export const addLanguage = (language: LanguageType): LanguageAction => ({
 });
 
 export const getLanguage = (language: LanguageType): LanguageAction => ({
-    type: GET_LANGUAGE,
+    type: GET_LANGUAGES,
     payload: language,
 });
 

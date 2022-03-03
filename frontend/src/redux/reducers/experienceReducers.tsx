@@ -1,5 +1,5 @@
 
-import { ADD_EXPERIENCE, UPDATE_EXPERIENCE } from "../actions/actionTypes";
+import { ADD_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "../actions/actionTypes";
 import { ExperienceAction } from "../actions/experienceActions";
 import { initialExperienceState } from "../state/experienceStates";
 
@@ -13,6 +13,12 @@ export const experiencesReducer = (
             return {
                 ...state,
                 experiences: [...state.experiences, action.payload]
+            };
+        }
+        case GET_EXPERIENCES: {
+            return {
+                ...state,
+                experiences: action.payload
             };
         }
         case UPDATE_EXPERIENCE: {

@@ -10,10 +10,5 @@ export interface ProjectState {
 
 export const initialProjectState: ProjectState = {
     projects: [
-        {
-            id: "1",
-            name: "onlinenot.org new",
-            description: "Free Guiat Tab and chord website base on (ReacJS, NodeJs, MongoDB)",
-        },
     ],
 };

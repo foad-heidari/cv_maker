@@ -6,6 +6,7 @@ import {
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
@@ -16,18 +17,16 @@ export default function Projects() {
     const experiences = useSelector(
         (state: AppState) => state.experiences.experiences
     );
+    const { cvId } = useParams();
+
 
     const dispatch = useDispatch();
 
     const addNewField = () => {
+        const order = experiences.length > 0 ? experiences[experiences.length - 1].order + 1 : 1;
         dispatch(addExperience({
-            id: "2",
-            name: "",
-            startDate: "",
-            endDate: "",
-            company: "",
-            location: "",
-            description: "",
+            cv: cvId || "",
+            order: order
         }));
     };
     const updateExperienceHandler = (data: FieldDataType) => {

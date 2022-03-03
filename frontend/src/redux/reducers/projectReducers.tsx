@@ -1,4 +1,4 @@
-import { ADD_PROJECT, UPDATE_PROJECT } from "../actions/actionTypes";
+import { ADD_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "../actions/actionTypes";
 import { ProjectAction } from "../actions/prjectsActions";
 import { initialProjectState } from "../state/projectStates";
 
@@ -12,6 +12,12 @@ export const projectsReducer = (
             return {
                 ...state,
                 projects: [...state.projects, action.payload]
+            };
+        }
+        case GET_PROJECTS: {
+            return {
+                ...state,
+                projects: action.payload
             };
         }
         case UPDATE_PROJECT: {

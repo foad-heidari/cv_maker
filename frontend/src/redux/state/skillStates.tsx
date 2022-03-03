@@ -10,10 +10,5 @@ export interface SkillState {
 
 export const initialSkillState: SkillState = {
     skills: [
-        {
-            id: "1",
-            name: "Javascript",
-            level: "100",
-        },
     ],
 };

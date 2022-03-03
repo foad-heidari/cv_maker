@@ -1,18 +1,25 @@
-from .models.cv import CVModel
-from .models.education import Education
-from .models.interest import Interest
-from .models.language import Language
 from rest_framework import serializers
+
+from .models import (Profile, Education, Interest, Language,
+                     CVModel, Skills, Projects, Experiences)
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = "__all__"
 
 
 class EducationSerializer(serializers.ModelSerializer):
-    startDate = serializers.CharField(source="start_at")
-    endDate = serializers.CharField(source="end_at")
+    startDate = serializers.CharField(
+        source="start_at", allow_null=True, default="")
+    endDate = serializers.CharField(
+        source="end_at", allow_null=True, default="")
 
     class Meta:
         model = Education
-        fields = ('id', 'cv', 'name', 'order',
-                  'company', 'startDate', 'endDate',)
+        fields = ('id', 'cv', 'name',
+                  'company', 'startDate', 'endDate', 'order',)
 
 
 class LanguageSerializer(serializers.ModelSerializer):
@@ -27,13 +34,44 @@ class InterestsSerializer(serializers.ModelSerializer):
         fields = ('id', 'cv', 'name', 'order', )
 
 
+class SkillsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skills
+        fields = ('id', 'cv', 'name', 'level', 'order', )
+
+
+class ProjectsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Projects
+        fields = ('id', 'cv', 'name', 'description', 'order', )
+
+
+class ExperiencesSerializer(serializers.ModelSerializer):
+    startDate = serializers.CharField(
+        source="start_at", allow_null=True, default="")
+    endDate = serializers.CharField(
+        source="end_at", allow_null=True, default="")
+
+    class Meta:
+        model = Experiences
+        fields = ('id', 'cv', 'name', 'location', 'description',
+                  'company', 'startDate', 'endDate', 'order')
+
+
 class CVSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(read_only=True)
     interests = InterestsSerializer(
         read_only=True, many=True, source="interest_set")
     languages = LanguageSerializer(
         read_only=True, many=True, source="language_set")
     educations = EducationSerializer(
         read_only=True, many=True, source="education_set")
+    skills = SkillsSerializer(
+        read_only=True, many=True, source="skills_set")
+    projects = ProjectsSerializer(
+        read_only=True, many=True, source="projects_set")
+    experiences = ExperiencesSerializer(
+        read_only=True, many=True, source="experiences_set")
 
     class Meta:
         model = CVModel

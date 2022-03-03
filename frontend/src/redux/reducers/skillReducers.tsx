@@ -1,4 +1,4 @@
-import { ADD_SKILL, UPDATE_SKILL } from "../actions/actionTypes";
+import { ADD_SKILL, GET_SKILLS, UPDATE_SKILL } from "../actions/actionTypes";
 import { SkillAction } from "../actions/skillActions";
 import { initialSkillState } from "../state/skillStates";
 
@@ -11,6 +11,12 @@ export const skillsReducer = (
             return {
                 ...state,
                 skills: [...state.skills, action.payload]
+            };
+        }
+        case GET_SKILLS: {
+            return {
+                ...state,
+                skills: action.payload
             };
         }
         case UPDATE_SKILL: {

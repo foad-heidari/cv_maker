@@ -1,4 +1,4 @@
-import { ADD_LANGUAGE, GET_LANGUAGE, UPDATE_LANGUAGE } from "../actions/actionTypes";
+import { ADD_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "../actions/actionTypes";
 import { LanguageAction } from "../actions/languageActions";
 import { initialLanguageState, LanguageState } from "../state/languageState";
 
@@ -14,7 +14,7 @@ export const languagesReducer = (
                 languages: [...state.languages, action.payload]
             };
         }
-        case GET_LANGUAGE: {
+        case GET_LANGUAGES: {
             return {
                 ...state,
                 languages: action.payload

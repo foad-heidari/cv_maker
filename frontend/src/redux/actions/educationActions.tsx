@@ -1,4 +1,4 @@
-import { ADD_EDUCATION, GET_EDUCATION, UPDATE_EDUCATION } from "./actionTypes";
+import { ADD_EDUCATION, GET_EDUCATIONS, UPDATE_EDUCATION } from "./actionTypes";
 import { EducationType } from "../state/educationStates";
 
 export type EducationAction = { type: string; payload: any };
@@ -12,7 +12,7 @@ export const addEducation = (education: EducationType): EducationAction => {
 
 export const getEducation = (education: EducationType): EducationAction => {
     return {
-        type: GET_EDUCATION,
+        type: GET_EDUCATIONS,
         payload: education,
     };
 };
