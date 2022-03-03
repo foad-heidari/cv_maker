@@ -38,6 +38,8 @@ export default function Languages() {
         <>
             {languages.map((element: FieldDataType) => <InputItem
                 fieldsData={(data) => updateLanguageHandler(data)}
+                deleteField={(id: string) => { console.log(id); }}
+
                 key={element.id}
                 element={element}
                 inputTitle="Language"

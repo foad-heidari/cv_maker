@@ -1,5 +1,6 @@
 export interface ExperienceType {
     id: string;
+    cv: string;
     name: string;
     startDate: string;
     endDate: string;

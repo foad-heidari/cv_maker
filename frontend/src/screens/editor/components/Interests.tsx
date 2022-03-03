@@ -41,6 +41,8 @@ export default function Interests() {
         <>
             {interests.map((element: FieldDataType) => <InputItem
                 fieldsData={(data) => updateInterestHandler(data)}
+                deleteField={(id: string) => { console.log(id); }}
+
                 key={element.id}
                 element={element}
                 Icon={<PianoIcon sx={{ mr: 1 }} />}

@@ -39,6 +39,7 @@ export default function Skills() {
         <>
             {skills.map((element: FieldDataType) => <InputItem
                 fieldsData={(data) => updateSkillHandler(data)}
+                deleteField={(id: string) => { console.log(id); }}
                 key={element.id} element={element} inputTitle="skill" />)}
 
 

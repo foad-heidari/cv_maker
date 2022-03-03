@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
-import { addExperience, updateExperience } from "../../../redux/actions/experienceActions";
+import { addExperience, deleteExperience, updateExperience } from "../../../redux/actions/experienceActions";
 
 
 export default function Projects() {
@@ -29,16 +29,17 @@ export default function Projects() {
             order: order
         }));
     };
-    const updateExperienceHandler = (data: FieldDataType) => {
+    const updateExperienceHandler = (data: FieldDataType, save: boolean) => {
         dispatch(updateExperience({
             id: data.id,
+            cv: cvId || "",
             name: data.name,
             startDate: data.startDate || "",
             endDate: data.endDate || "",
             company: data.company || "",
             location: data.location || "",
             description: data.description || "",
-        }
+        }, save
         ));
     };
 
@@ -46,7 +47,8 @@ export default function Projects() {
     return (
         <>
             {experiences.map((element: FieldDataType) => <InputItem
-                fieldsData={(data) => updateExperienceHandler(data)}
+                fieldsData={(data, save) => updateExperienceHandler(data, save)}
+                deleteField={(id: string) => dispatch(deleteExperience(id))}
                 key={element.id}
                 element={element}
                 showlocation={true}

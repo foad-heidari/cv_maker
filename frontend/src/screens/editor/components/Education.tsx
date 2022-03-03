@@ -43,6 +43,7 @@ export default function Education() {
         <>
             {educations.map((element: FieldDataType) => <InputItem
                 fieldsData={(data) => updateEducationHandler(data)}
+                deleteField={(id: string) => { console.log(id); }}
 
                 key={element.id}
                 element={element}

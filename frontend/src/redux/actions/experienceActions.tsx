@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { ADD_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "./actionTypes";
+import { ADD_EXPERIENCE, DELETE_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "./actionTypes";
 import { ExperienceType } from "../state/experienceStates";
 import { EXPERIENCES_URL } from "../../utils/APIUrls";
 
@@ -23,7 +23,26 @@ export const getExperiences = (payload: ExperienceType): ExperienceAction => {
     };
 };
 
-export const updateExperience = (payload: ExperienceType): ExperienceAction => ({
-    type: UPDATE_EXPERIENCE,
-    payload,
-});
+
+export const updateExperience = (payload: ExperienceType, save = false) => {
+    return async function addExperienceThunk(dispatch: Dispatch) {
+        if (save) {
+            await axios.put(`${EXPERIENCES_URL}${payload.id}/`, payload);
+        }
+
+        dispatch({
+            type: UPDATE_EXPERIENCE,
+            payload: payload
+        });
+    };
+};
+
+export const deleteExperience = (id: string) => {
+    return async function deleteExperienceThunk(dispatch: Dispatch) {
+        await axios.delete(EXPERIENCES_URL + id);
+        dispatch({
+            type: DELETE_EXPERIENCE,
+            payload: id
+        });
+    };
+};

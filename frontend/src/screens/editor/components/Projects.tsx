@@ -40,6 +40,7 @@ export default function Projects() {
         <>
             {projects.map((element: FieldDataType) => <InputItem
                 fieldsData={(data) => updateProjectHandler(data)}
+                deleteField={(id: string) => { console.log(id); }}
                 key={element.id}
                 element={element}
                 showDescription={true}
