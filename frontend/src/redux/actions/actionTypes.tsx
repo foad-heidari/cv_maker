@@ -20,6 +20,7 @@ export const DELETE_LANGUAGE = "DELETE_LANGUAGE";
 
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const GET_PROFILE = "GET_PROFILE";
+export const SAVE_PROFILE = "SAVE_PROFILE";
 
 export const ADD_PROJECT = "ADD_PROJECT";
 export const GET_PROJECTS = "GET_PROJECTS";

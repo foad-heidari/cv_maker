@@ -7,7 +7,7 @@ import {
     Typography
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProfile } from "../../../redux/actions/profileActions";
+import { saveProfile, updateProfile } from "../../../redux/actions/profileActions";
 import { ProfileType } from "../../../redux/state/ProfileStates";
 import { AppState } from "../../../redux/Store";
 
@@ -30,7 +30,11 @@ export default function SkillsCard() {
 
     const dispatch = useDispatch();
 
-    const updateProfileHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const updateProfileHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, save = false) => {
+        if (save) {
+            dispatch(saveProfile(profile));
+            return;
+        }
         dispatch(updateProfile({
             name: e.target.name,
             value: e.target.value
@@ -66,6 +70,7 @@ export default function SkillsCard() {
             {profileFields.map((item) => (
                 <TextField
                     onChange={(e) => updateProfileHandler(e)}
+                    onBlur={(e) => updateProfileHandler(e, true)}
                     fullWidth
                     sx={{ mb: 2 }}
                     key={item}
@@ -84,6 +89,7 @@ export default function SkillsCard() {
                 variant="standard"
                 value={profile.career_profile}
                 onChange={(e) => updateProfileHandler(e)}
+                onBlur={(e) => updateProfileHandler(e, true)}
             />
         </Paper>
     );

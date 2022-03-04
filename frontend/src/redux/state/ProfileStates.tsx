@@ -1,4 +1,6 @@
 export interface ProfileType {
+    cv: string;
+    id: string;
     full_name: string;
     subtitle: string;
     address: string;
@@ -16,6 +18,8 @@ export interface ProfileState {
 
 export const initialProfileState: ProfileState = {
     profile: {
+        "cv": "",
+        "id": "",
         "full_name": "",
         "subtitle": "",
         "address": "",

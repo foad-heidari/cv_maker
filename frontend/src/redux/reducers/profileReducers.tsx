@@ -1,4 +1,4 @@
-import { GET_PROFILE, UPDATE_PROFILE } from "../actions/actionTypes";
+import { GET_PROFILE, SAVE_PROFILE, UPDATE_PROFILE } from "../actions/actionTypes";
 import { ProfileAction } from "../actions/profileActions";
 import { initialProfileState, ProfileState } from "../state/ProfileStates";
 
@@ -21,6 +21,12 @@ export const profileReducer = (
                 {
                     ...state.profile, [action.payload.name]: action.payload.value
                 }
+            };
+        }
+        case SAVE_PROFILE: {
+            return {
+                ...state,
+                profile: action.payload
             };
         }
         default:
