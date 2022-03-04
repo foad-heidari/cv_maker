@@ -1,4 +1,4 @@
-import { ADD_SKILL, GET_SKILLS, UPDATE_SKILL } from "../actions/actionTypes";
+import { ADD_SKILL, DELETE_SKILL, GET_SKILLS, UPDATE_SKILL } from "../actions/actionTypes";
 import { SkillAction } from "../actions/skillActions";
 import { initialSkillState } from "../state/skillStates";
 
@@ -24,6 +24,12 @@ export const skillsReducer = (
                 ...state,
                 skills: state.skills.map(item => item.id === action.payload.id
                     ? action.payload : item)
+            };
+        }
+        case DELETE_SKILL: {
+            return {
+                ...state,
+                skills: state.skills.filter(item => item.id !== action.payload)
             };
         }
         default:

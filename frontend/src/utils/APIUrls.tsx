@@ -4,3 +4,4 @@ export const INTERESTS_URL = BASE_API_URL + "api/interests/";
 export const LANGUAGES_URL = BASE_API_URL + "api/languages/";
 export const EXPERIENCES_URL = BASE_API_URL + "api/experiences/";
 export const PROJECTS_URL = BASE_API_URL + "api/projects/";
+export const SKILLS_URL = BASE_API_URL + "api/skills/";

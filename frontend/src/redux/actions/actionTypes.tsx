@@ -27,6 +27,7 @@ export const DELETE_PROJECT = "DELETE_PROJECT";
 export const ADD_SKILL = "ADD_SKILL";
 export const UPDATE_SKILL = "UPDATE_SKILL";
 export const GET_SKILLS = "GET_SKILLS";
+export const DELETE_SKILL = "DELETE_SKILL";
 
 export const ADD_CV = "ADD_CV";
 export const UPDATE_CV = "UPDATE_CV";
