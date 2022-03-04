@@ -3,6 +3,7 @@ import RocketIcon from "@mui/icons-material/Rocket";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
 import LinearProgressItem from "./LinearProgressItem";
+import { SkillType } from "../../../../redux/state/skillStates";
 import { AppState } from "../../../../redux/Store";
 
 
@@ -15,7 +16,7 @@ export default function Skills() {
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<RocketIcon fontSize="small" />} title="Skills" />
-            {skills.map(item => (
+            {skills.map((item: SkillType) => (
                 <LinearProgressItem key={item.id} value={Number(item.level)} text={item.name} />
             ))}
 

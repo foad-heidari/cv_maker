@@ -1,4 +1,6 @@
 export interface ProfileType {
+    cv: string;
+    id: string;
     full_name: string;
     subtitle: string;
     address: string;
@@ -16,15 +18,17 @@ export interface ProfileState {
 
 export const initialProfileState: ProfileState = {
     profile: {
-        "full_name": "Foad Heidari",
-        "subtitle": "Software Engineer",
-        "address": "Netherlands",
-        "email_address": "foad.heidari.1377@gmail.com",
-        "phone_number": "0617777777",
-        "website": "onlinenot.org",
-        "linkedin": "linkedin",
-        "github": "github",
-        "twitter": "twitter",
-        "career_profile": "something about myself"
+        "cv": "",
+        "id": "",
+        "full_name": "",
+        "subtitle": "",
+        "address": "",
+        "email_address": "",
+        "phone_number": "",
+        "website": "",
+        "linkedin": "",
+        "github": "",
+        "twitter": "",
+        "career_profile": ""
     },
 };

@@ -1,4 +1,11 @@
+import uuid
+
 from django.db import models
+
+
+class StatusChoice(models.TextChoices):
+    ACTIVE = "ACTIVE"
+    ARCHIVE = "ARCHIVE"
 
 
 class LevelChoice(models.TextChoices):
@@ -11,13 +18,16 @@ class LevelChoice(models.TextChoices):
 
 
 class BaseModel(models.Model):
-    name = models.CharField(max_length=150)
-    order = models.IntegerField(default=1)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    cv = models.ForeignKey("CVModel", on_delete=models.CASCADE)
+    name = models.CharField(max_length=150, blank=True)
+    order = models.IntegerField(default=1, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['order']
+        abstract = True
 
     def __str__(self):
         return self.name

@@ -18,7 +18,7 @@ import React, { SyntheticEvent } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { FieldDataType } from "../../../types/EditorTypes";
+import { FieldDataType } from "../../../utils/Types";
 
 
 interface InputProps {
@@ -30,11 +30,12 @@ interface InputProps {
     showCompany?: boolean;
     showlocation?: boolean;
     Icon?: React.ReactElement<SvgIconProps>;
-    fieldsData: (data: FieldDataType) => void;
+    fieldsData: (data: FieldDataType, save: boolean) => void;
+    deleteField: (id: string) => void;
 }
 
 function InputItem(props: InputProps) {
-    const { inputTitle, hideLevel, showDescription, showlocation, showCompany, showDate, element, Icon, fieldsData } = props;
+    const { inputTitle, hideLevel, showDescription, showlocation, showCompany, showDate, element, Icon, fieldsData, deleteField } = props;
     const [data, setData] = React.useState<FieldDataType>({
         id: element.id,
         name: element.name,
@@ -47,18 +48,18 @@ function InputItem(props: InputProps) {
     });
     const [expanded, setExpanded] = React.useState(element.id);
 
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent, save = false) => {
         setData({
             ...data, [e.target.name]: e.target.value
         });
         fieldsData({
             ...data, [e.target.name]: e.target.value
-        });
+        }, save);
 
     };
 
-    const handleChange = (panel: number) => (event: SyntheticEvent<Element, Event>, isExpanded: boolean) => {
-        setExpanded(isExpanded ? panel : 0);
+    const handleChange = (panel: string) => (event: SyntheticEvent<Element, Event>, isExpanded: boolean) => {
+        setExpanded(isExpanded ? panel : "");
     };
     return (
         <Accordion expanded={expanded === element.id} onChange={handleChange(element.id)}>
@@ -74,7 +75,14 @@ function InputItem(props: InputProps) {
             <AccordionDetails>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <TextField fullWidth name="name" value={data.name} onChange={(e) => changeHandler(e)} label={inputTitle} variant="standard" />
+                        <TextField
+                            fullWidth
+                            name="name"
+                            value={data.name}
+                            onChange={(e) => changeHandler(e)}
+                            onBlur={(e) => changeHandler(e, true)}
+                            label={inputTitle}
+                            variant="standard" />
                     </Grid>
                     {!hideLevel ?
                         <Grid item xs={12}>
@@ -85,6 +93,7 @@ function InputItem(props: InputProps) {
                                     name="level"
                                     value={data.level}
                                     onChange={(e) => { changeHandler(e); }}
+                                    onBlur={(e) => changeHandler(e, true)}
                                     label="Level"
                                 >
                                     <MenuItem value="">
@@ -107,7 +116,7 @@ function InputItem(props: InputProps) {
                                 label="Start Date"
                                 value={data.startDate}
                                 onChange={(e) => changeHandler(e)}
-
+                                onBlur={(e) => changeHandler(e, true)}
                                 variant="standard"
                             />
                         </Grid>
@@ -117,6 +126,7 @@ function InputItem(props: InputProps) {
                                 label="End Date"
                                 value={data.endDate}
                                 onChange={(e) => changeHandler(e)}
+                                onBlur={(e) => changeHandler(e, true)}
                                 variant="standard"
                             />
                         </Grid>
@@ -131,7 +141,7 @@ function InputItem(props: InputProps) {
                                 value={data.company}
                                 fullWidth
                                 onChange={(e) => changeHandler(e)}
-
+                                onBlur={(e) => changeHandler(e, true)}
                                 variant="standard"
                             />
                         </Grid>
@@ -145,6 +155,7 @@ function InputItem(props: InputProps) {
                                 value={data.location}
                                 fullWidth
                                 onChange={(e) => changeHandler(e)}
+                                onBlur={(e) => changeHandler(e, true)}
                                 variant="standard"
                             />
                         </Grid>
@@ -156,6 +167,7 @@ function InputItem(props: InputProps) {
                             label="Description"
                             value={data.description}
                             onChange={(e) => changeHandler(e)}
+                            onBlur={(e) => changeHandler(e, true)}
                             multiline
                             rows={4}
                             fullWidth
@@ -171,7 +183,7 @@ function InputItem(props: InputProps) {
                         alignItems="center"
                         sx={{ mt: 2 }}
                     >
-                        <IconButton>
+                        <IconButton onClick={() => deleteField(data.id)}>
                             <DeleteOutlineIcon />
                         </IconButton>
                         <div>

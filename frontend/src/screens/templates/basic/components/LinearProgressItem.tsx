@@ -15,7 +15,10 @@ export default function LinearProgressItem(props: Props) {
                 </Typography>
             </Grid>
             <Grid item xs={8}>
-                <LinearProgress sx={{ height: 7, borderRadius: 5, }} value={value} variant="determinate" />
+                {value ?
+                    <LinearProgress sx={{ height: 7, borderRadius: 5, }} value={value} variant="determinate" />
+                    : ""
+                }
             </Grid>
         </Grid>
     );

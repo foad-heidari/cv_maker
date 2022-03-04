@@ -6,9 +6,10 @@ import {
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
-import { FieldDataType } from "../../../types/EditorTypes";
-import { addLanguage, updateLanguage } from "../../../redux/actions/languageActions";
+import { FieldDataType } from "../../../utils/Types";
+import { addLanguage, deleteLanguage, updateLanguage } from "../../../redux/actions/languageActions";
 import { AppState } from "../../../redux/Store";
 
 
@@ -18,26 +19,30 @@ export default function Languages() {
     );
 
     const dispatch = useDispatch();
-
-    const updateLanguageHandler = (data: FieldDataType) => {
+    const { cvId } = useParams();
+    const updateLanguageHandler = (data: FieldDataType, save: boolean) => {
         dispatch(updateLanguage({
             id: data.id,
+            cv: cvId || "",
             name: data.name,
-            level: data.level || "",
-        }));
+            level: data.level || "0",
+        }, save
+        ));
     };
 
     const addNewField = () => {
+        const order = languages.length > 0 ? languages[languages.length - 1].order + 1 : 1;
         dispatch(addLanguage({
-            id: 4,
-            name: "",
-            level: "",
+            order,
+            cv: cvId || "",
         }));
     };
     return (
         <>
             {languages.map((element: FieldDataType) => <InputItem
-                fieldsData={(data) => updateLanguageHandler(data)}
+                fieldsData={(data, save) => updateLanguageHandler(data, save)}
+                deleteField={(id: string) => dispatch(deleteLanguage(id))}
+
                 key={element.id}
                 element={element}
                 inputTitle="Language"

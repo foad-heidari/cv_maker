@@ -1,5 +1,6 @@
 export interface EducationType {
-    id: number;
+    id: string;
+    cv: string;
     name: string;
     startDate: string;
     endDate: string;
@@ -11,13 +12,5 @@ export interface EducationState {
 }
 
 export const initialEducationState: EducationState = {
-    educations: [
-        {
-            id: 1,
-            name: "Accounting",
-            startDate: "May 2019",
-            endDate: "May 2020",
-            company: "Bu ali sina",
-        },
-    ],
+    educations: [],
 };

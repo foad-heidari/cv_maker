@@ -4,6 +4,7 @@ import { grey } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
 import { AppState } from "../../../../redux/Store";
+import { ExperienceType } from "../../../../redux/state/experienceStates";
 
 export default function Experiences() {
     const experiences = useSelector(
@@ -15,7 +16,7 @@ export default function Experiences() {
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<WorkIcon fontSize="small" />} title="Experiences" />
-            {experiences.map(item => {
+            {experiences.map((item: ExperienceType) => {
                 return <Box key={item.id} sx={{ mb: 2, lineHeight: 1 }}>
                     <Box>
                         <Box

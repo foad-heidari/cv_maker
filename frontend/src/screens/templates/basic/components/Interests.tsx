@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+import { InterestType } from "../../../../redux/state/interestStates";
 import { AppState } from "../../../../redux/Store";
 
 const Interests: React.FC = () => {
@@ -17,7 +18,7 @@ const Interests: React.FC = () => {
             }}
         >
             <Typography fontWeight={600} textTransform="uppercase">Interests</Typography>
-            {interests?.map(item => (
+            {interests?.map((item: InterestType) => (
                 <Box key={item.id}>
                     <Typography variant="caption">
                         {item.name}

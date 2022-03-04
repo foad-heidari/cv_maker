@@ -1,16 +1,45 @@
-import { ADD_LANGUAGE, UPDATE_LANGUAGE } from "./actionTypes";
+import { Dispatch } from "redux";
+import axios from "axios";
+import { ADD_LANGUAGE, DELETE_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "./actionTypes";
 import { LanguageType } from "../state/languageState";
+import { LANGUAGES_URL } from "../../utils/APIUrls";
 
 
-export type LanguageAction = { type: string; payload: LanguageType };
+export type LanguageAction = { type: string; payload: any };
 
-export const addLanguage = (language: LanguageType): LanguageAction => ({
-    type: ADD_LANGUAGE,
+export const addLanguage = (payload: { cv: string, order: number }) => {
+    return async function addLanguageThunk(dispatch: Dispatch) {
+        const res = await axios.post(LANGUAGES_URL, payload);
+        dispatch({
+            type: ADD_LANGUAGE,
+            payload: res.data
+        });
+    };
+};
+
+export const getLanguage = (language: LanguageType): LanguageAction => ({
+    type: GET_LANGUAGES,
     payload: language,
 });
 
-export const updateLanguage = (language: LanguageType): LanguageAction => ({
-    type: UPDATE_LANGUAGE,
-    payload: language,
-});
+export const updateLanguage = (payload: LanguageType, save = false) => {
+    return async function updateLanguageThunk(dispatch: Dispatch) {
+        if (save) {
+            await axios.put(`${LANGUAGES_URL}${payload.id}/`, payload);
+        }
+        dispatch({
+            type: UPDATE_LANGUAGE,
+            payload: payload
+        });
+    };
+};
 
+export const deleteLanguage = (id: string) => {
+    return async function deleteLanguageThunk(dispatch: Dispatch) {
+        await axios.delete(LANGUAGES_URL + id);
+        dispatch({
+            type: DELETE_LANGUAGE,
+            payload: id
+        });
+    };
+};

@@ -1,4 +1,4 @@
-import { ADD_EDUCATION, UPDATE_EDUCATION } from "../actions/actionTypes";
+import { ADD_EDUCATION, DELETE_EDUCATION, GET_EDUCATIONS, UPDATE_EDUCATION } from "../actions/actionTypes";
 import { EducationAction } from "../actions/educationActions";
 import { initialEducationState } from "../state/educationStates";
 
@@ -13,11 +13,23 @@ export const educationsReducer = (
                 educations: [...state.educations, action.payload]
             };
         }
+        case GET_EDUCATIONS: {
+            return {
+                ...state,
+                educations: action.payload
+            };
+        }
         case UPDATE_EDUCATION: {
             return {
                 ...state,
                 educations: state.educations.map(item => item.id === action.payload.id
                     ? action.payload : item)
+            };
+        }
+        case DELETE_EDUCATION: {
+            return {
+                ...state,
+                educations: state.educations.filter(item => item.id !== action.payload)
             };
         }
         default:

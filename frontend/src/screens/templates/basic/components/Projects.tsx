@@ -3,6 +3,8 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
 import { AppState } from "../../../../redux/Store";
+import { ProjectType } from "../../../../redux/state/projectStates";
+
 
 
 export default function Projects() {
@@ -14,7 +16,7 @@ export default function Projects() {
     return (
         <Box sx={{ mb: 3 }}>
             <SectionHeader icon={<AccountTreeIcon fontSize="small" />} title="Projects" />
-            {projects.map(item => (
+            {projects.map((item: ProjectType) => (
                 <Box key={item.id} sx={{ mb: 2, lineHeight: 1 }}>
                     <Typography color="primary.main" variant="body2">
                         {item.name}
