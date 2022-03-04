@@ -1,5 +1,6 @@
 export interface ProjectType {
     id: string;
+    cv: string;
     name: string;
     description: string;
 }

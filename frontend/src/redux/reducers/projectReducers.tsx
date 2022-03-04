@@ -1,4 +1,4 @@
-import { ADD_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "../actions/actionTypes";
+import { ADD_PROJECT, DELETE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "../actions/actionTypes";
 import { ProjectAction } from "../actions/prjectsActions";
 import { initialProjectState } from "../state/projectStates";
 
@@ -25,6 +25,12 @@ export const projectsReducer = (
                 ...state,
                 projects: state.projects.map(item => item.id === action.payload.id
                     ? action.payload : item)
+            };
+        }
+        case DELETE_PROJECT: {
+            return {
+                ...state,
+                projects: state.projects.filter(item => item.id !== action.payload)
             };
         }
         default:

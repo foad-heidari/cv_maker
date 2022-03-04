@@ -25,7 +25,7 @@ export const getExperiences = (payload: ExperienceType): ExperienceAction => {
 
 
 export const updateExperience = (payload: ExperienceType, save = false) => {
-    return async function addExperienceThunk(dispatch: Dispatch) {
+    return async function updateExperienceThunk(dispatch: Dispatch) {
         if (save) {
             await axios.put(`${EXPERIENCES_URL}${payload.id}/`, payload);
         }
