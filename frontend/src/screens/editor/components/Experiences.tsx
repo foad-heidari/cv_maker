@@ -26,7 +26,7 @@ export default function Projects() {
         const order = experiences.length > 0 ? experiences[experiences.length - 1].order + 1 : 1;
         dispatch(addExperience({
             cv: cvId || "",
-            order: order
+            order
         }));
     };
     const updateExperienceHandler = (data: FieldDataType, save: boolean) => {

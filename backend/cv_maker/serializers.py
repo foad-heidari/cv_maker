@@ -12,9 +12,9 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class EducationSerializer(serializers.ModelSerializer):
     startDate = serializers.CharField(
-        source="start_at", allow_null=True, default="")
+        source="start_at", allow_blank=True, default="")
     endDate = serializers.CharField(
-        source="end_at", allow_null=True, default="")
+        source="end_at", allow_blank=True, default="")
 
     class Meta:
         model = Education

@@ -1,5 +1,6 @@
 export interface EducationType {
     id: string;
+    cv: string;
     name: string;
     startDate: string;
     endDate: string;
@@ -11,7 +12,5 @@ export interface EducationState {
 }
 
 export const initialEducationState: EducationState = {
-    educations: [
-
-    ],
+    educations: [],
 };
