@@ -1,5 +1,6 @@
 export interface LanguageType {
     id: string;
+    cv: string;
     name: string;
     level: string;
 }

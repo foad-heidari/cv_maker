@@ -1,4 +1,4 @@
-import { ADD_INTEREST, GET_INTERESTS, UPDATE_INTEREST } from "../actions/actionTypes";
+import { ADD_INTEREST, DELETE_INTEREST, GET_INTERESTS, UPDATE_INTEREST } from "../actions/actionTypes";
 import { InterestAction } from "../actions/interestActions";
 import { initialInterestsState, InterestsState } from "../state/interestStates";
 
@@ -25,6 +25,12 @@ export const interestsReducer = (
                 ...state,
                 interests: state.interests.map(item => item.id === action.payload.id
                     ? action.payload : item)
+            };
+        }
+        case DELETE_INTEREST: {
+            return {
+                ...state,
+                interests: state.interests.filter(item => item.id !== action.payload)
             };
         }
         default:

@@ -1,4 +1,4 @@
-import { ADD_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "../actions/actionTypes";
+import { ADD_LANGUAGE, DELETE_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "../actions/actionTypes";
 import { LanguageAction } from "../actions/languageActions";
 import { initialLanguageState, LanguageState } from "../state/languageState";
 
@@ -25,6 +25,12 @@ export const languagesReducer = (
                 ...state,
                 languages: state.languages.map(item => item.id === action.payload.id
                     ? action.payload : item)
+            };
+        }
+        case DELETE_LANGUAGE: {
+            return {
+                ...state,
+                languages: state.languages.filter(item => item.id !== action.payload)
             };
         }
         default:

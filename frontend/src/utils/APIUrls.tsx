@@ -6,3 +6,4 @@ export const EXPERIENCES_URL = BASE_API_URL + "api/experiences/";
 export const PROJECTS_URL = BASE_API_URL + "api/projects/";
 export const SKILLS_URL = BASE_API_URL + "api/skills/";
 export const EDUCATIONS_URL = BASE_API_URL + "api/educations/";
+export const LANGUAGE_URL = BASE_API_URL + "api/languages/";

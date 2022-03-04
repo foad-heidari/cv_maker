@@ -30,7 +30,6 @@ export const updateProject = (payload: ProjectType, save = false) => {
         if (save) {
             await axios.put(`${PROJECTS_URL}${payload.id}/`, payload);
         }
-
         dispatch({
             type: UPDATE_PROJECT,
             payload: payload
