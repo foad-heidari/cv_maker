@@ -8,6 +8,11 @@ django = ">=4.0"
 djangorestframework = "*"
 django-cors-headers = "*"
 django-environ = "*"
+django-rest-auth = "*"
+django-allauth = "*"
+django-rest-framework = "*"
+requests = "*"
+django-rest-allauth = "*"
 
 [dev-packages]
 autopep8 = "*"
