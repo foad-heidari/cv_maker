@@ -1,8 +1,9 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { ADD_SKILL, DELETE_SKILL, GET_SKILLS, UPDATE_SKILL } from "./actionTypes";
-import { SkillType } from "../state/skillStates";
-import { SKILLS_URL } from "../../utils/APIUrls";
+import { SKILLS_URL } from "../../../utils/APIUrls";
+import { SkillType } from "../../state/cv_states/skillStates";
+import { ADD_SKILL, DELETE_SKILL, GET_SKILLS, UPDATE_SKILL } from "../actionTypes";
+
 
 export type SkillAction = { type: string; payload: any };
 

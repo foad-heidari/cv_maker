@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { ADD_EXPERIENCE, DELETE_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "./actionTypes";
-import { ExperienceType } from "../state/experienceStates";
-import { EXPERIENCES_URL } from "../../utils/APIUrls";
+import { EXPERIENCES_URL } from "../../../utils/APIUrls";
+import { ExperienceType } from "../../state/cv_states/experienceStates";
+import { ADD_EXPERIENCE, DELETE_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "../actionTypes";
+
 
 export type ExperienceAction = { type: string; payload: any };
 

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { ADD_EDUCATION, DELETE_EDUCATION, GET_EDUCATIONS, UPDATE_EDUCATION } from "./actionTypes";
-import { EducationType } from "../state/educationStates";
-import { EDUCATIONS_URL } from "../../utils/APIUrls";
+import { EDUCATIONS_URL } from "../../../utils/APIUrls";
+import { EducationType } from "../../state/cv_states/educationStates";
+import { ADD_EDUCATION, DELETE_EDUCATION, GET_EDUCATIONS, UPDATE_EDUCATION } from "../actionTypes";
 
 export type EducationAction = { type: string; payload: any };
 

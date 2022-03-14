@@ -1,7 +1,6 @@
-
-import { ADD_EXPERIENCE, DELETE_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "../actions/actionTypes";
-import { ExperienceAction } from "../actions/experienceActions";
-import { initialExperienceState } from "../state/experienceStates";
+import { ADD_EXPERIENCE, DELETE_EXPERIENCE, GET_EXPERIENCES, UPDATE_EXPERIENCE } from "../../actions/actionTypes";
+import { ExperienceAction } from "../../actions/cv_actions/experienceActions";
+import { initialExperienceState } from "../../state/cv_states/experienceStates";
 
 
 export const experiencesReducer = (

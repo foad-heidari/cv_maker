@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../utils/Types";
-import { addLanguage, deleteLanguage, updateLanguage } from "../../../redux/actions/languageActions";
+import { addLanguage, deleteLanguage, updateLanguage } from "../../../redux/actions/cv_actions/languageActions";
 import { AppState } from "../../../redux/Store";
 
 

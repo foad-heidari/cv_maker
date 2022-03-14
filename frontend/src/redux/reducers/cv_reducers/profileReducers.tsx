@@ -1,6 +1,6 @@
-import { GET_PROFILE, SAVE_PROFILE, UPDATE_PROFILE } from "../actions/actionTypes";
-import { ProfileAction } from "../actions/profileActions";
-import { initialProfileState, ProfileState } from "../state/ProfileStates";
+import { GET_PROFILE, SAVE_PROFILE, UPDATE_PROFILE } from "../../actions/actionTypes";
+import { ProfileAction } from "../../actions/cv_actions/profileActions";
+import { initialProfileState, ProfileState } from "../../state/cv_states/ProfileStates";
 
 
 export const profileReducer = (

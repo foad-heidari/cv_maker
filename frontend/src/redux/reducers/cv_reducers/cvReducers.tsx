@@ -1,6 +1,6 @@
-import { ADD_CV, GET_CVS } from "../actions/actionTypes";
-import { CVAction } from "../actions/cvActions";
-import { initialCVState } from "../state/cvStates";
+import { ADD_CV, GET_CVS } from "../../actions/actionTypes";
+import { CVAction } from "../../actions/cv_actions/cvActions";
+import { initialCVState } from "../../state/cv_states/cvStates";
 
 export const cvReducer = (
     state = initialCVState,

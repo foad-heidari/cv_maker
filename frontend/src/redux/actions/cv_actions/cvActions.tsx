@@ -1,6 +1,5 @@
-import { ADD_CV, GET_CVS, UPDATE_CV } from "./actionTypes";
-import { CVType } from "../state/cvStates";
-
+import { CVType } from "../../state/cv_states/cvStates";
+import { ADD_CV, GET_CVS, UPDATE_CV } from "../actionTypes";
 
 export type CVAction = { type: string; payload: CVType };
 

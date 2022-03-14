@@ -1,6 +1,6 @@
-import { ADD_PROJECT, DELETE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "../actions/actionTypes";
-import { ProjectAction } from "../actions/prjectsActions";
-import { initialProjectState } from "../state/projectStates";
+import { ADD_PROJECT, DELETE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "../../actions/actionTypes";
+import { ProjectAction } from "../../actions/cv_actions/prjectsActions";
+import { initialProjectState } from "../../state/cv_states/projectStates";
 
 
 export const projectsReducer = (

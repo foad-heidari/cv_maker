@@ -1,6 +1,6 @@
-import { ADD_LANGUAGE, DELETE_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "../actions/actionTypes";
-import { LanguageAction } from "../actions/languageActions";
-import { initialLanguageState, LanguageState } from "../state/languageState";
+import { ADD_LANGUAGE, DELETE_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "../../actions/actionTypes";
+import { LanguageAction } from "../../actions/cv_actions/languageActions";
+import { initialLanguageState, LanguageState } from "../../state/cv_states/languageState";
 
 
 export const languagesReducer = (

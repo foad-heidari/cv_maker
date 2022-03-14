@@ -7,8 +7,8 @@ import {
     Typography
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { saveProfile, updateProfile } from "../../../redux/actions/profileActions";
-import { ProfileType } from "../../../redux/state/ProfileStates";
+import { saveProfile, updateProfile } from "../../../redux/actions/cv_actions/profileActions";
+import { ProfileType } from "../../../redux/state/cv_states/ProfileStates";
 import { AppState } from "../../../redux/Store";
 
 const profileFields = [

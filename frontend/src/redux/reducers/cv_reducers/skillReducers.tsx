@@ -1,6 +1,6 @@
-import { ADD_SKILL, DELETE_SKILL, GET_SKILLS, UPDATE_SKILL } from "../actions/actionTypes";
-import { SkillAction } from "../actions/skillActions";
-import { initialSkillState } from "../state/skillStates";
+import { ADD_SKILL, DELETE_SKILL, GET_SKILLS, UPDATE_SKILL } from "../../actions/actionTypes";
+import { SkillAction } from "../../actions/cv_actions/skillActions";
+import { initialSkillState } from "../../state/cv_states/skillStates";
 
 export const skillsReducer = (
     state = initialSkillState,

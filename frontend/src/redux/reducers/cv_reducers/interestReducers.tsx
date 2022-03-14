@@ -1,6 +1,6 @@
-import { ADD_INTEREST, DELETE_INTEREST, GET_INTERESTS, UPDATE_INTEREST } from "../actions/actionTypes";
-import { InterestAction } from "../actions/interestActions";
-import { initialInterestsState, InterestsState } from "../state/interestStates";
+import { ADD_INTEREST, DELETE_INTEREST, GET_INTERESTS, UPDATE_INTEREST } from "../../actions/actionTypes";
+import { InterestAction } from "../../actions/cv_actions/interestActions";
+import { initialInterestsState, InterestsState } from "../../state/cv_states/interestStates";
 
 
 export const interestsReducer = (

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { ADD_INTEREST, DELETE_INTEREST, GET_INTERESTS, UPDATE_INTEREST } from "./actionTypes";
-import { InterestType } from "../state/interestStates";
-import { INTERESTS_URL } from "../../utils/APIUrls";
+import { INTERESTS_URL } from "../../../utils/APIUrls";
+import { InterestType } from "../../state/cv_states/interestStates";
+import { ADD_INTEREST, DELETE_INTEREST, GET_INTERESTS, UPDATE_INTEREST } from "../actionTypes";
+
 
 export type InterestAction = { type: string; payload: any }
 

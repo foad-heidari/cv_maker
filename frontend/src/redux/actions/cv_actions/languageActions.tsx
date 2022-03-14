@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { ADD_LANGUAGE, DELETE_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "./actionTypes";
-import { LanguageType } from "../state/languageState";
-import { LANGUAGES_URL } from "../../utils/APIUrls";
+import { LANGUAGES_URL } from "../../../utils/APIUrls";
+import { LanguageType } from "../../state/cv_states/languageState";
+import { ADD_LANGUAGE, DELETE_LANGUAGE, GET_LANGUAGES, UPDATE_LANGUAGE } from "../actionTypes";
 
 
 export type LanguageAction = { type: string; payload: any };

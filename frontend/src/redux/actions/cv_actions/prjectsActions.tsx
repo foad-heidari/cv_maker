@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { ADD_PROJECT, DELETE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "./actionTypes";
-import { ProjectType } from "../state/projectStates";
-import { PROJECTS_URL } from "../../utils/APIUrls";
+import { PROJECTS_URL } from "../../../utils/APIUrls";
+import { ProjectType } from "../../state/cv_states/projectStates";
+import { ADD_PROJECT, DELETE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from "../actionTypes";
+
 
 export type ProjectAction = { type: string; payload: any };
 

@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
-import { addEducation, deleteEducation, updateEducation } from "../../../redux/actions/educationActions";
+import { addEducation, deleteEducation, updateEducation } from "../../../redux/actions/cv_actions/educationActions";
 
 
 export default function Education() {

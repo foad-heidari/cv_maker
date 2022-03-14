@@ -1,6 +1,6 @@
-import { ADD_EDUCATION, DELETE_EDUCATION, GET_EDUCATIONS, UPDATE_EDUCATION } from "../actions/actionTypes";
-import { EducationAction } from "../actions/educationActions";
-import { initialEducationState } from "../state/educationStates";
+import { ADD_EDUCATION, DELETE_EDUCATION, GET_EDUCATIONS, UPDATE_EDUCATION } from "../../actions/actionTypes";
+import { EducationAction } from "../../actions/cv_actions/educationActions";
+import { initialEducationState } from "../../state/cv_states/educationStates";
 
 export const educationsReducer = (
     state = initialEducationState,

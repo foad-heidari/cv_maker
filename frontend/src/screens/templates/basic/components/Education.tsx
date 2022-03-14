@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { EducationType } from "../../../../redux/state/educationStates";
+
 
 import { useSelector } from "react-redux";
+import { EducationType } from "../../../../redux/state/cv_states/educationStates";
 import { AppState } from "../../../../redux/Store";
 
 export default function Education() {
@@ -20,7 +21,7 @@ export default function Education() {
             }}
         >
             <Typography fontWeight={600} textTransform="uppercase">Education</Typography>
-            {educations.map((item:EducationType) => (
+            {educations.map((item: EducationType) => (
                 <Box
                     key={item.id}
                     display="flex"

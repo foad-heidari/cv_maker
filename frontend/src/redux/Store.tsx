@@ -1,15 +1,16 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { cvReducer } from "./reducers/cvReducers";
+import { cvReducer } from "./reducers/cv_reducers/cvReducers";
 
-import { educationsReducer } from "./reducers/educationReducers";
-import { experiencesReducer } from "./reducers/experienceReducers";
-import { interestsReducer } from "./reducers/interestReducers";
-import { languagesReducer } from "./reducers/languageReducers";
-import { profileReducer } from "./reducers/profileReducers";
-import { projectsReducer } from "./reducers/projectReducers";
-import { skillsReducer } from "./reducers/skillReducers";
+import { educationsReducer } from "./reducers/cv_reducers/educationReducers";
+import { experiencesReducer } from "./reducers/cv_reducers/experienceReducers";
+import { interestsReducer } from "./reducers/cv_reducers/interestReducers";
+import { languagesReducer } from "./reducers/cv_reducers/languageReducers";
+import { profileReducer } from "./reducers/cv_reducers/profileReducers";
+import { projectsReducer } from "./reducers/cv_reducers/projectReducers";
+import { skillsReducer } from "./reducers/cv_reducers/skillReducers";
+import { UserReducer } from "./reducers/user_reducers/userReducers";
 
 const rootReducer = combineReducers({
     interests: interestsReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     educations: educationsReducer,
     languages: languagesReducer,
     cv: cvReducer,
+    user: UserReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>
 

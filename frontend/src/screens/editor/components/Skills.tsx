@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
-import { addSkill, deleteSkill, updateSkill } from "../../../redux/actions/skillActions";
+import { addSkill, deleteSkill, updateSkill } from "../../../redux/actions/cv_actions/skillActions";
 
 
 export default function Skills() {

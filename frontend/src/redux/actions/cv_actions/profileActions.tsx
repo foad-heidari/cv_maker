@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { GET_PROFILE, SAVE_PROFILE, UPDATE_PROFILE } from "./actionTypes";
-import { PROFILE_URL } from "../../utils/APIUrls";
-import { ProfileType } from "../state/ProfileStates";
+import { PROFILE_URL } from "../../../utils/APIUrls";
+import { ProfileType } from "../../state/cv_states/ProfileStates";
+import { GET_PROFILE, SAVE_PROFILE, UPDATE_PROFILE } from "../actionTypes";
 
 export type ProfileAction = { type: string; payload: { name: string, value: string } | any };
 
