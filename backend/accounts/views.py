@@ -42,10 +42,11 @@ class LoginView(
 
 
 class RegisterView(
-
+    mixins.RetrieveModelMixin,
     mixins.CreateModelMixin,
         viewsets.GenericViewSet):
     serializer_class = RegisterSerializer
+    permission_classes = (permissions.AllowAny,)
     queryset = User.objects.all()
 
     def create(self, request, *args, **kwargs):

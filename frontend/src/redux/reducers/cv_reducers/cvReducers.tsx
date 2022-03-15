@@ -17,7 +17,7 @@ export const cvReducer = (
         case GET_CVS: {
             return {
                 ...state,
-                ...action.payload
+                cvs: action.payload
             };
         }
         default:

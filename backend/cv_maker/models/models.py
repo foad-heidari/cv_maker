@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 
+from accounts.models import User
+
 from .base_model import BaseModel, LevelChoice, StatusChoice
 
 
@@ -29,6 +31,8 @@ class Profile(models.Model):
 
 class CVModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     status = models.CharField(
         max_length=20, default=StatusChoice.ACTIVE, choices=StatusChoice.choices)
 

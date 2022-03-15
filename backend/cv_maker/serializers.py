@@ -4,6 +4,7 @@ from .models import (Profile, Education, Interest, Language,
                      CVModel, Skills, Projects, Experiences)
 
 
+# TODO: only show own user CVs in the Cv queryset
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile

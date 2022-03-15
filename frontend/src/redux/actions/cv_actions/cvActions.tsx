@@ -1,12 +1,18 @@
+import axios from "axios";
+import { Dispatch } from "redux";
+import { EDUCATIONS_URL } from "../../../utils/APIUrls";
 import { CVType } from "../../state/cv_states/cvStates";
 import { ADD_CV, GET_CVS, UPDATE_CV } from "../actionTypes";
 
 export type CVAction = { type: string; payload: CVType };
 
-export const getCV = (cv: CVType): CVAction => {
-    return {
-        type: GET_CVS,
-        payload: cv,
+export const getCVs = () => {
+    return async function getCVsThunk(dispatch: Dispatch) {
+        const res = await axios.post(EDUCATIONS_URL);
+        dispatch({
+            type: GET_CVS,
+            payload: res.data
+        });
     };
 };
 

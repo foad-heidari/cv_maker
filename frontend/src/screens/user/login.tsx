@@ -8,14 +8,16 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Copyright from "./components/Coppyright";
 import { userLogin } from "../../redux/actions/user_actions/userActions";
+import { AppState } from "../../redux/Store";
 
 
 export default function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -25,8 +27,17 @@ export default function Login() {
             email: data.get("email")?.toString() || "",
             password: data.get("password")?.toString() || "",
         }));
-
     };
+
+    const user = useSelector(
+        (state: AppState) => state.user.user
+    );
+    React.useEffect(() => {
+        if (user) {
+            navigate("/");
+        }
+    }, [user]);
+
 
     return (
         <Container component="main" maxWidth="xs">
