@@ -13,6 +13,7 @@ django-allauth = "*"
 django-rest-framework = "*"
 requests = "*"
 django-rest-allauth = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 autopep8 = "*"
