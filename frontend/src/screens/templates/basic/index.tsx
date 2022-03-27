@@ -1,13 +1,14 @@
-import { Grid, Paper, } from "@mui/material";
+import { Interests } from "@mui/icons-material";
+import { Grid, Paper } from "@mui/material";
 import CareerProfile from "./components/CareerProfile";
-import ProfileBox from "./components/ProfileBox";
-import Skills from "./components/Skills";
-import Languages from "./components/Languages";
-import SocialAndContact from "./components/SocialAndContact";
-import Interests from "./components/Interests";
-import Projects from "./components/Projects";
-import Experiences from "./components/Experiences";
 import Education from "./components/Education";
+import Experiences from "./components/Experiences";
+import Languages from "./components/Languages";
+import ProfileBox from "./components/ProfileBox";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import SocialAndContact from "./components/SocialAndContact";
+
 
 export default function BasicCVTemplate() {
     return (

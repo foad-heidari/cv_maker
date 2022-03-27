@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
-
 import { useSelector } from "react-redux";
 import { EducationType } from "../../../../redux/state/cv_states/educationStates";
 import { AppState } from "../../../../redux/Store";

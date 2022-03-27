@@ -4,10 +4,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
-import { Alert, AlertColor, CircularProgress, Grid, Snackbar } from "@mui/material";
+import { Alert, CircularProgress, Grid, Snackbar } from "@mui/material";
 import AppBar from "./components/AppBar";
 import CVEditor from "./screens/editor";
-import Home from "./screens/home";
 import Login from "./screens/user/login";
 import Signup from "./screens/user/signup";
 import NotFound from "./components/NotFound";
@@ -15,6 +14,7 @@ import RequireAuth from "./utils/RequireAuth";
 import { userAuth } from "./redux/actions/user_actions/userActions";
 import { AppState } from "./redux/Store";
 import { deleteMessage } from "./redux/actions/cv_actions/messageActions";
+import Home from "./screens/home";
 
 
 function App() {
