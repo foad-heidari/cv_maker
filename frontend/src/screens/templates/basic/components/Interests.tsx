@@ -25,7 +25,6 @@ const Interests: React.FC = () => {
                     </Typography>
                 </Box>
             ))}
-
         </Box>
 
     );

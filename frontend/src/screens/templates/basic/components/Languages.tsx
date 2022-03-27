@@ -26,8 +26,6 @@ export default function Languages() {
                     <Typography color={grey[300]} variant="caption"> {(item.level && item.level !== "0") ? `(${item.level}%)` : ""} </Typography>
                 </Box>
             ))}
-
         </Box>
-
     );
 }

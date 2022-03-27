@@ -1,8 +1,8 @@
-import { Interests } from "@mui/icons-material";
 import { Grid, Paper } from "@mui/material";
 import CareerProfile from "./components/CareerProfile";
 import Education from "./components/Education";
 import Experiences from "./components/Experiences";
+import Interests from "./components/Interests";
 import Languages from "./components/Languages";
 import ProfileBox from "./components/ProfileBox";
 import Projects from "./components/Projects";
@@ -27,7 +27,6 @@ export default function BasicCVTemplate() {
                     <Languages />
                     <Interests />
                 </Grid>
-
             </Grid>
         </Paper>
     );
