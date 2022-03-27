@@ -9,6 +9,15 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = "__all__"
 
+from .models import (Profile, Education, Interest, Language,
+                     CVModel, Skills, Projects, Experiences)
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = "__all__"
+
 
 class EducationSerializer(serializers.ModelSerializer):
     startDate = serializers.CharField(
