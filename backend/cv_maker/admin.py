@@ -1,12 +1,31 @@
 from django.contrib import admin
-
 from .models import (Profile, Education, Interest,
-                     Language, Skills, Projects, Experiences)
+                     Language, Skills, Projects, Experiences, CVModel)
 
-admin.site.register(Profile)
-admin.site.register(Education)
-admin.site.register(Language)
-admin.site.register(Interest)
-admin.site.register(Skills)
-admin.site.register(Projects)
-admin.site.register(Experiences)
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+
+
+@admin.register(CVModel)
+class CvAdmin(admin.ModelAdmin):
+    list_display = ('user', 'id',)
+    list_filter = ("status",)
+    search_fields = ['user__email']
+    inlines = [
+        ProfileInline
+    ]
+
+
+class DefaultModelAdmin(admin.ModelAdmin):
+    list_display = ('user', 'id',)
+    search_fields = ['cv__user__email']
+
+    def user(self, obj):
+        return obj.cv.user
+
+
+@admin.register(Education, Interest,
+                Language, Skills, Projects, Experiences)
+class UserCvAdmin(DefaultModelAdmin):
+    pass

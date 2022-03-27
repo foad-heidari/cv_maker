@@ -3,10 +3,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-6k8nj+nrkl1f4xztq6vx5ir_rua=bf_w2yuaa#941b!(@vl2e%'
-DEBUG = True
+SECRET_KEY = os.environ.get("SECRET_KEY", "some_key")
+DEBUG = os.environ.get("DEBUG", True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", [])
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,10 +19,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_rest_allauth',
-    # 'rest_auth',
-    # 'allauth',
-    # 'allauth.account',
-    # 'rest_auth.registration',
     'django.contrib.sites',
     'corsheaders',
 
@@ -95,7 +91,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
@@ -107,10 +102,10 @@ REST_FRAMEWORK = {
 
 }
 
-CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-]
+])
 
 LANGUAGE_CODE = 'en-us'
 

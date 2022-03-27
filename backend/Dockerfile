@@ -2,12 +2,15 @@ FROM python:3.8
 
 ENV PYTHONUNBUFFERED 1
 
-# Install python dependencies in /.venv
 WORKDIR /app/backend
 
 COPY ./Pipfile ./Pipfile.lock ./
 
-RUN pip install --upgrade pip
+
+# Update pip
+RUN python -m pip install --upgrade pip
+
+# install packages
 RUN pip install pipenv
 RUN pipenv install
 
