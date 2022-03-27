@@ -1,5 +1,9 @@
 import uuid
 from django.db import models
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
+
+from accounts.models import User
 
 from .base_model import BaseModel, LevelChoice, StatusChoice
 
@@ -27,6 +31,8 @@ class Profile(models.Model):
 
 class CVModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     status = models.CharField(
         max_length=20, default=StatusChoice.ACTIVE, choices=StatusChoice.choices)
 
@@ -34,6 +40,12 @@ class CVModel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """
+        Unicode representation for an CVModel.
+
+        :return: string
+        """
+
         return str(self.id)
 
 
@@ -67,3 +79,13 @@ class Experiences(BaseModel):
     start_at = models.CharField(max_length=150, blank=True)
     end_at = models.CharField(max_length=150, blank=True)
     description = models.TextField(blank=True)
+
+
+# signals
+@receiver(post_save, sender=CVModel)
+def create_cv_profile(sender, instance, created, **kwargs):
+    """
+    Create a Profile for CvModel when CV Created
+    """
+    if created:
+        Profile.objects.create(cv=instance)

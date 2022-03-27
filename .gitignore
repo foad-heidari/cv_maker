@@ -1,5 +1,3 @@
-node_modules
-
 ### Django ###
 *.log
 *.pot
@@ -157,3 +155,18 @@ chrome-user-data
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+### React
+# dependencies
+*/node_modules
+*/.pnp
+*.pnp.js
+
+# testing
+*/coverage
+
+# production
+*/build
+
+
+/data

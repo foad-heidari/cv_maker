@@ -1,4 +1,13 @@
 from rest_framework import serializers
+from .models import (Profile, Education, Interest, Language,
+                     CVModel, Skills, Projects, Experiences)
+
+
+# TODO: only show own user CVs in the Cv queryset
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = "__all__"
 
 from .models import (Profile, Education, Interest, Language,
                      CVModel, Skills, Projects, Experiences)
@@ -19,31 +28,34 @@ class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
         fields = ('id', 'cv', 'name',
-                  'company', 'startDate', 'endDate', 'order',)
+                  'company', 'startDate', 'endDate', 'order', "created_at", "updated_at")
 
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
-        fields = ('id', 'cv', 'name', 'level', 'order', )
+        fields = ('id', 'cv', 'name', 'level',
+                  'order', "created_at", "updated_at")
 
 
 class InterestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interest
-        fields = ('id', 'cv', 'name', 'order', )
+        fields = ('id', 'cv', 'name', 'order', "created_at", "updated_at")
 
 
 class SkillsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skills
-        fields = ('id', 'cv', 'name', 'level', 'order', )
+        fields = ('id', 'cv', 'name', 'level',
+                  'order', "created_at", "updated_at")
 
 
 class ProjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Projects
-        fields = ('id', 'cv', 'name', 'description', 'order', )
+        fields = ('id', 'cv', 'name', 'description',
+                  'order', "created_at", "updated_at")
 
 
 class ExperiencesSerializer(serializers.ModelSerializer):
@@ -55,7 +67,7 @@ class ExperiencesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experiences
         fields = ('id', 'cv', 'name', 'location', 'description',
-                  'company', 'startDate', 'endDate', 'order')
+                  'company', 'startDate', 'endDate', 'order', "created_at", "updated_at")
 
 
 class CVSerializer(serializers.ModelSerializer):
@@ -77,3 +89,4 @@ class CVSerializer(serializers.ModelSerializer):
         model = CVModel
         # fields = ('id', 'status', 'interests')
         fields = "__all__"
+        read_only_fields = ('user',)

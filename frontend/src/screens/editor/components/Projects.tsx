@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import InputItem from "./InputItem";
 import { FieldDataType } from "../../../utils/Types";
 import { AppState } from "../../../redux/Store";
-import { addProject, deleteProject, updateProject } from "../../../redux/actions/prjectsActions";
+import { addProject, deleteProject, updateProject } from "../../../redux/actions/cv_actions/prjectsActions";
 
 
 export default function Projects() {

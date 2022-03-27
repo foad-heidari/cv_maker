@@ -3,7 +3,7 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { useSelector } from "react-redux";
 import SectionHeader from "./SectionHeader";
 import { AppState } from "../../../../redux/Store";
-import { ProjectType } from "../../../../redux/state/projectStates";
+import { ProjectType } from "../../../../redux/state/cv_states/projectStates";
 
 
 

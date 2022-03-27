@@ -1,35 +1,49 @@
 import { useEffect } from "react";
 import { Container, Grid } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import axios from "axios";
 import ContentEditor from "./ContentEditor";
 import ContentPreview from "./ContentPreview";
-import { getInterests } from "../../redux/actions/interestActions";
+import { getEducation } from "../../redux/actions/cv_actions/educationActions";
+import { getExperiences } from "../../redux/actions/cv_actions/experienceActions";
+import { getInterests } from "../../redux/actions/cv_actions/interestActions";
+import { getLanguage } from "../../redux/actions/cv_actions/languageActions";
+import { getProjects } from "../../redux/actions/cv_actions/prjectsActions";
+import { getProfile } from "../../redux/actions/cv_actions/profileActions";
+import { getSkills } from "../../redux/actions/cv_actions/skillActions";
 import { CV_URL } from "../../utils/APIUrls";
-import { getEducation } from "../../redux/actions/educationActions";
-import { getLanguage } from "../../redux/actions/languageActions";
-import { getSkills } from "../../redux/actions/skillActions";
-import { getProjects } from "../../redux/actions/prjectsActions";
-import { getExperiences } from "../../redux/actions/experienceActions";
-import { getProfile } from "../../redux/actions/profileActions";
+import { addMessage } from "../../redux/actions/cv_actions/messageActions";
+import { MessageEnumType } from "../../redux/state/cv_states/messageState";
+
 
 export default function CVEditor() {
   const { cvId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getCVData = async () => {
     // Get the CV data and update the redux state
-    const res = await axios.get(CV_URL + cvId);
-    dispatch(getEducation(res.data.educations));
-    dispatch(getLanguage(res.data.languages));
-    dispatch(getInterests(res.data.interests));
-    dispatch(getSkills(res.data.skills));
-    dispatch(getProjects(res.data.projects));
-    dispatch(getExperiences(res.data.experiences));
-    dispatch(getProfile(res.data.profile));
+    const token = localStorage.getItem("token");
+    try{
+      const res = await axios.get(CV_URL + cvId,{ headers: { "Authorization": "Token " + token } });
+      dispatch(getEducation(res.data.educations));
+      dispatch(getLanguage(res.data.languages));
+      dispatch(getInterests(res.data.interests));
+      dispatch(getSkills(res.data.skills));
+      dispatch(getProjects(res.data.projects));
+      dispatch(getExperiences(res.data.experiences));
+      dispatch(getProfile(res.data.profile));
+    }catch{
+      dispatch(addMessage({
+        type:MessageEnumType.error,
+        message:"Page not fund!"
+      }));
+      navigate("/");
+    }
   };
+
   useEffect(() => {
     getCVData();
   }, []);

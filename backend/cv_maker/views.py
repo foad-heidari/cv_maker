@@ -1,5 +1,7 @@
 from rest_framework import viewsets, permissions
 
+from .permissions import IsOwner, OnlyOwnDataMixin
+
 from .serializers import (
     CVSerializer, EducationSerializer, ExperiencesSerializer,
     InterestsSerializer, LanguageSerializer, ProfileSerializer,
@@ -8,45 +10,55 @@ from .models import (Profile, Education, Interest, Language,
                      CVModel, Skills, Projects, Experiences)
 
 
-class ProfileViewSet(viewsets.ModelViewSet):
+class ProfileViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    # TODO: only creator of the item can access the item
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class CVViewSet(viewsets.ModelViewSet):
     queryset = CVModel.objects.all()
     serializer_class = CVSerializer
-    # TODO: only creator of the item can access the item
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        return super().get_queryset().filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
-class EducationViewSet(viewsets.ModelViewSet):
+class EducationViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class LanguageViewSet(viewsets.ModelViewSet):
+class LanguageViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Language.objects.all()
     serializer_class = LanguageSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class InterestViewSet(viewsets.ModelViewSet):
+class InterestViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Interest.objects.all()
     serializer_class = InterestsSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class SkillViewSet(viewsets.ModelViewSet):
+class SkillViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Skills.objects.all()
     serializer_class = SkillsSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class ProjectViewSet(viewsets.ModelViewSet):
+class ProjectViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Projects.objects.all()
     serializer_class = ProjectsSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class ExperienceViewSet(viewsets.ModelViewSet):
+class ExperienceViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):
     queryset = Experiences.objects.all()
     serializer_class = ExperiencesSerializer
+    permission_classes = [permissions.IsAuthenticated]

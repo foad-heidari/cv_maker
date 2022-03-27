@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
-import { InterestType } from "../../../../redux/state/interestStates";
+import { InterestType } from "../../../../redux/state/cv_states/interestStates";
 import { AppState } from "../../../../redux/Store";
 
 const Interests: React.FC = () => {

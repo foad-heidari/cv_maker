@@ -1,17 +1,11 @@
-import {
-    Button,
-    Divider,
-    Grid,
-} from "@mui/material";
-
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { Button, Divider, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import InputItem from "./InputItem";
-import { FieldDataType } from "../../../utils/Types";
-import { addLanguage, deleteLanguage, updateLanguage } from "../../../redux/actions/languageActions";
+import { addLanguage, deleteLanguage, updateLanguage } from "../../../redux/actions/cv_actions/languageActions";
 import { AppState } from "../../../redux/Store";
-
+import { FieldDataType } from "../../../utils/Types";
 
 export default function Languages() {
     const languages = useSelector(

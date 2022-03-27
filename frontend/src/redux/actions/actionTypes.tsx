@@ -1,3 +1,6 @@
+/*
+// CV action types
+*/
 export const ADD_EDUCATION = "ADD_EDUCATION";
 export const GET_EDUCATIONS = "GET_EDUCATIONS";
 export const UPDATE_EDUCATION = "UPDATE_EDUCATION";
@@ -35,3 +38,29 @@ export const DELETE_SKILL = "DELETE_SKILL";
 export const ADD_CV = "ADD_CV";
 export const UPDATE_CV = "UPDATE_CV";
 export const GET_CVS = "GET_CVS";
+
+/*
+// Alert action types
+*/
+export const ALERT_SUCCESS = "ALERT_SUCCESS";
+export const ALERT_ERROR = "ALERT_ERROR";
+export const ALERT_CLEAR = "ALERT_CLEAR";
+
+export const ADD_MESSAGE = "ADD_MESSAGE";
+export const DELETE_MESSAGE = "DELETE_MESSAGE";
+
+/*
+// User action types
+*/
+export const USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST";
+export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
+export const USER_REGISTER_FAILURE = "USER_REGISTER_FAILURE";
+
+export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
+export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
+export const USER_LOGIN_FAILURE = "USER_LOGIN_FAILURE";
+
+export const USER_AUTH_SUCCESS = "USER_AUTH_SUCCESS";
+export const USER_AUTH_FAILURE = "USER_AUTH_FAILURE";
+
+export const USER_LOGOUT = "USER_LOGOUT";
