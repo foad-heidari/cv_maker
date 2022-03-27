@@ -1,32 +1,56 @@
-import { Container, Divider, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { Button, Container, Divider, Grid, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TemplateCard from "./componets/TemplateCard";
+import AddNewCvDialog from "./componets/AddNewCvDialog";
 import { getCVs } from "../../redux/actions/cv_actions/cvActions";
+import { AppState } from "../../redux/Store";
+import { CVType } from "../../redux/state/cv_states/cvStates";
 
 
 export default function Home() {
+    const cvs = useSelector(
+        (state: AppState) => state.cv.cvs
+    );
+    const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCVs());
+    }, []);
 
 
-    // useEffect(() => {
-    //     getCVs();
-    // }, []);
     return (
         <>
-            <Container sx={{ my: 4 }} maxWidth="lg" >
-                <Typography variant="h6" component="h2">
-                    Your CV Templates
-                </Typography>
-                <Divider sx={{ mt: 1, mb: 3 }} />
-                <TemplateCard />
-            </Container>
+            <AddNewCvDialog open={open} handleClose={() => setOpen(!open)} />
 
             <Container sx={{ my: 4 }} maxWidth="lg" >
                 <Typography variant="h6" component="h2">
-                    Create New CV
+                    Your CVs
                 </Typography>
                 <Divider sx={{ mt: 1, mb: 3 }} />
-                <TemplateCard />
+                <Grid container spacing={2}>
+                    {cvs.map((item: CVType) => (
+                        <Grid key={item.id} item xs={12} md={4}>
+                            <TemplateCard item={item} />
+                        </Grid>
+                    ))}
+
+                    <Grid item
+                        xs={12}
+                        md={4}
+                        container
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <Button sx={{ p: 5 }} variant="outlined" onClick={() => setOpen(!open)}>
+                            Add new cv
+                        </Button>
+                    </Grid>
+                </Grid>
+
             </Container>
+
         </>
     );
 }

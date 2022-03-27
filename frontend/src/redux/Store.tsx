@@ -7,6 +7,7 @@ import { educationsReducer } from "./reducers/cv_reducers/educationReducers";
 import { experiencesReducer } from "./reducers/cv_reducers/experienceReducers";
 import { interestsReducer } from "./reducers/cv_reducers/interestReducers";
 import { languagesReducer } from "./reducers/cv_reducers/languageReducers";
+import { messageReducer } from "./reducers/cv_reducers/messageReducers";
 import { profileReducer } from "./reducers/cv_reducers/profileReducers";
 import { projectsReducer } from "./reducers/cv_reducers/projectReducers";
 import { skillsReducer } from "./reducers/cv_reducers/skillReducers";
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     languages: languagesReducer,
     cv: cvReducer,
     user: UserReducer,
+    message:messageReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>
 

@@ -1,13 +1,21 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { USER_LOGIN_URL, USER_SIGNUP_URL } from "../../../utils/APIUrls";
-import { USER_LOGIN_FAILURE, USER_LOGIN_SUCCESS, USER_REGISTER_FAILURE, USER_REGISTER_SUCCESS } from "../actionTypes";
+import { USER_AUTH_URL, USER_LOGIN_URL, USER_SIGNUP_URL } from "../../../utils/APIUrls";
+import {
+    USER_AUTH_FAILURE,
+    USER_AUTH_SUCCESS,
+    USER_LOGIN_FAILURE,
+    USER_LOGIN_SUCCESS,
+    USER_REGISTER_FAILURE,
+    USER_REGISTER_SUCCESS
+} from "../actionTypes";
 import { UserType } from "../../state/user_states/userStates";
 
 
 export type UserAction = { type: string; payload: UserType };
 
 export type UserLoginType = { email: string, password: string }
+
 export const userLogin = (payload: UserLoginType) => {
     return async function userLoginThunk(dispatch: Dispatch) {
         try {
@@ -29,6 +37,7 @@ export const userLogin = (payload: UserLoginType) => {
 };
 
 export type UserSignupType = { email: string, password: string, password2: string }
+
 export const userSignup = (payload: UserSignupType) => {
     return async function userSignupThunk(dispatch: Dispatch) {
         try {
@@ -48,29 +57,28 @@ export const userSignup = (payload: UserSignupType) => {
 
     };
 };
-// export const getLanguage = (language: LanguageType): LanguageAction => ({
-//     type: GET_LANGUAGES,
-//     payload: language,
-// });
 
-// export const updateLanguage = (payload: LanguageType, save = false) => {
-//     return async function updateLanguageThunk(dispatch: Dispatch) {
-//         if (save) {
-//             await axios.put(`${LANGUAGES_URL}${payload.id}/`, payload);
-//         }
-//         dispatch({
-//             type: UPDATE_LANGUAGE,
-//             payload: payload
-//         });
-//     };
-// };
 
-// export const deleteLanguage = (id: string) => {
-//     return async function deleteLanguageThunk(dispatch: Dispatch) {
-//         await axios.delete(LANGUAGES_URL + id);
-//         dispatch({
-//             type: DELETE_LANGUAGE,
-//             payload: id
-//         });
-//     };
-// };
+
+
+export const userAuth = (payload: { token: string }) => {
+    return async function userAuthThunk(dispatch: Dispatch) {
+        try {
+            const headers = {
+                headers: { "Authorization": "Token " + payload.token }
+            };
+            const res = await axios.post(USER_AUTH_URL, {}, headers);
+            dispatch({
+                type: USER_AUTH_SUCCESS,
+                payload: res.data
+            });
+        } catch (err: unknown) {
+            localStorage.removeItem("token");
+            // const error = err as AxiosError;
+            dispatch({
+                type: USER_AUTH_FAILURE
+            });
+        }
+
+    };
+};

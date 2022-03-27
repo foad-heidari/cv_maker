@@ -23,6 +23,10 @@ class CVViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
+    
+    def perform_create(self, serializer):
+        print("---------- here ----")
+        serializer.save(user=self.request.user)
 
 
 class EducationViewSet(OnlyOwnDataMixin, viewsets.ModelViewSet):

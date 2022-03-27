@@ -1,12 +1,11 @@
 import { ADD_CV, GET_CVS } from "../../actions/actionTypes";
 import { CVAction } from "../../actions/cv_actions/cvActions";
-import { initialCVState } from "../../state/cv_states/cvStates";
+import { CVState, initialCVState } from "../../state/cv_states/cvStates";
 
 export const cvReducer = (
-    state = initialCVState,
+    state: CVState = initialCVState,
     action: CVAction
 ) => {
-
     switch (action.type) {
         case ADD_CV: {
             return {

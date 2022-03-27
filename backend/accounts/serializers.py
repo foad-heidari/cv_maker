@@ -4,6 +4,7 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
+from rest_framework.authtoken.models import Token
 
 from .models import User
 
@@ -78,3 +79,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+
+
+

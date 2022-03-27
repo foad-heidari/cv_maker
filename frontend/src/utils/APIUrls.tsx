@@ -15,3 +15,4 @@ export const PROFILE_URL = BASE_API_URL + "api/profile/";
 */
 export const USER_LOGIN_URL = BASE_API_URL + "user/login/";
 export const USER_SIGNUP_URL = BASE_API_URL + "user/register/";
+export const USER_AUTH_URL = BASE_API_URL + "user/authenticate/";

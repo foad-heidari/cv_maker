@@ -41,23 +41,34 @@ class LoginView(
         })
 
 
-class RegisterView(
-    mixins.RetrieveModelMixin,
-    mixins.CreateModelMixin,
-        viewsets.GenericViewSet):
+class RegisterView(GenericAPIView):
     serializer_class = RegisterSerializer
     permission_classes = (permissions.AllowAny,)
     queryset = User.objects.all()
 
-    def create(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """User registration view."""
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         token, created = Token.objects.get_or_create(user=user)
-        print(token)
         return Response({
             "id": user.id,
             "token": token.key,
+            "email": user.email,
+        })
+
+
+# authenticate
+class Authenticate(GenericAPIView):
+    serializer_class = serializers.Serializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        """Authenticate user."""
+        user = request.user
+        return Response({
+            "id": user.id,
+            "token": str(user.auth_token),
             "email": user.email,
         })

@@ -46,6 +46,9 @@ export const ALERT_SUCCESS = "ALERT_SUCCESS";
 export const ALERT_ERROR = "ALERT_ERROR";
 export const ALERT_CLEAR = "ALERT_CLEAR";
 
+export const ADD_MESSAGE = "ADD_MESSAGE";
+export const DELETE_MESSAGE = "DELETE_MESSAGE";
+
 /*
 // User action types
 */
@@ -56,5 +59,8 @@ export const USER_REGISTER_FAILURE = "USER_REGISTER_FAILURE";
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_FAILURE = "USER_LOGIN_FAILURE";
+
+export const USER_AUTH_SUCCESS = "USER_AUTH_SUCCESS";
+export const USER_AUTH_FAILURE = "USER_AUTH_FAILURE";
 
 export const USER_LOGOUT = "USER_LOGOUT";
