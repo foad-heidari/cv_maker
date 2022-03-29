@@ -11,8 +11,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useDispatch, useSelector } from "react-redux";
+import { grey } from "@mui/material/colors";
 import { NavBarPages } from "../utils/Types";
-
+import { AppState } from "../redux/Store";
+import { userLogout } from "../redux/actions/user_actions/userActions";
 
 const pages: NavBarPages[] = [
   {
@@ -21,8 +24,24 @@ const pages: NavBarPages[] = [
   },
 ];
 
+const rightPages: NavBarPages[] = [
+  {
+    name: "Login",
+    link: "/login"
+  },
+  {
+    name: "Signup",
+    link: "/signup"
+  },
+];
+
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState<Element | null>(null);
+  const dispatch = useDispatch();
+  const user = useSelector(
+    (state: AppState) => state.user.user
+  );
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -39,9 +58,9 @@ const ResponsiveAppBar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            sx={{ mr: 5, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            CV MAKER
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -90,7 +109,7 @@ const ResponsiveAppBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            CV MAKER
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -98,12 +117,38 @@ const ResponsiveAppBar = () => {
                 component={Link}
                 to={page.link}
                 key={page.name}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white", display: "block",fontWeight: "bold"  }}
               >
                 {page.name}
               </Button>
             ))}
+          </Box>
+
+          <Box justifyContent="center" alignItems="center" sx={{ display: { xs: "none", md: "flex" } }}>
+            {user ?
+              <>
+                <Typography
+                
+                sx={{ m: 2, color: grey[300], display: "block" }}
+                >{user.email}</Typography>
+                <Button
+                  key="logout"
+                  sx={{ my: 2, color: "white", fontWeight: "bold"  }}
+                  onClick={()=>dispatch(userLogout())}
+                >
+                  Logout
+                </Button>
+              </> :
+              rightPages.map((page) => (
+                <Button
+                  key={page.name}
+                  component={Link}
+                  to={page.link}
+                  sx={{ my: 2, color: "white", display: "block",fontWeight: "bold"  }}
+                >
+                  {page.name}
+                </Button>
+              ))}
           </Box>
 
         </Toolbar>

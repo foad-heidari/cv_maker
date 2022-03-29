@@ -8,13 +8,14 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import validator from "validator";
-import { useState } from "react";
 import Copyright from "./components/Coppyright";
 import { userSignup, UserSignupType } from "../../redux/actions/user_actions/userActions";
 import { AppState } from "../../redux/Store";
+import { addMessage } from "../../redux/actions/cv_actions/messageActions";
+import { MessageType } from "../../redux/state/cv_states/messageState";
 
 
 export default function Signup() {
@@ -34,7 +35,7 @@ export default function Signup() {
     });
 
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const emailValid = validator.isEmail(data.email);
         const passwordValid = validator.isLength(data.password, {
@@ -49,11 +50,12 @@ export default function Signup() {
             });
         }
 
-        dispatch(userSignup({
+        const res = await dispatch(userSignup({
             email: data.email,
             password: data.password,
             password2: data.password2,
         }));
+        dispatch(addMessage({ ...res } as MessageType));
 
     };
 

@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Container, Grid } from "@mui/material";
+import { useEffect, useState } from "react";
+import { CircularProgress, Container, Grid } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -20,14 +20,16 @@ import { MessageEnumType } from "../../redux/state/cv_states/messageState";
 
 export default function CVEditor() {
   const { cvId } = useParams();
+  const [loading, setLoading] = useState(true);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const getCVData = async () => {
     // Get the CV data and update the redux state
     const token = localStorage.getItem("token");
-    try{
-      const res = await axios.get(CV_URL + cvId,{ headers: { "Authorization": "Token " + token } });
+    try {
+      const res = await axios.get(CV_URL + cvId, { headers: { "Authorization": "Token " + token } });
       dispatch(getEducation(res.data.educations));
       dispatch(getLanguage(res.data.languages));
       dispatch(getInterests(res.data.interests));
@@ -35,11 +37,14 @@ export default function CVEditor() {
       dispatch(getProjects(res.data.projects));
       dispatch(getExperiences(res.data.experiences));
       dispatch(getProfile(res.data.profile));
-    }catch{
+
+      setLoading(false);
+    } catch {
       dispatch(addMessage({
-        type:MessageEnumType.error,
-        message:"Page not fund!"
+        type: MessageEnumType.error,
+        message: "Page not fund!"
       }));
+      setLoading(false);
       navigate("/");
     }
   };
@@ -51,12 +56,20 @@ export default function CVEditor() {
   return (
     <Container>
       <Grid container spacing={2} sx={{ my: 2 }}>
-        <Grid item xs={4}>
-          <ContentEditor />
-        </Grid>
-        <Grid item xs={8}>
-          <ContentPreview />
-        </Grid>
+        {loading ?
+          <Grid item container alignItems="center" justifyContent="center">
+            <CircularProgress sx={{ my: 5 }} size={100} disableShrink />
+          </Grid>
+          :
+          <>
+            <Grid item xs={4}>
+              <ContentEditor />
+            </Grid>
+            <Grid item xs={8}>
+              <ContentPreview />
+            </Grid>
+          </>
+        }
       </Grid>
     </Container>
 

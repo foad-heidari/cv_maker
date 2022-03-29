@@ -3,6 +3,7 @@ import {
     USER_AUTH_SUCCESS,
     USER_LOGIN_FAILURE,
     USER_LOGIN_SUCCESS,
+    USER_LOGOUT,
     USER_REGISTER_FAILURE,
     USER_REGISTER_SUCCESS
 } from "../../actions/actionTypes";
@@ -26,8 +27,8 @@ export const UserReducer = (
         }
         case USER_LOGIN_FAILURE:
         case USER_AUTH_FAILURE:
-        case USER_REGISTER_FAILURE: {
-            console.log("first");
+        case USER_REGISTER_FAILURE:
+        case USER_LOGOUT: {
             return {
                 ...state,
                 user: null

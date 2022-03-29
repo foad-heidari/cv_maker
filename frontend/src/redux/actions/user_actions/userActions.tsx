@@ -1,15 +1,21 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-import { USER_AUTH_URL, USER_LOGIN_URL, USER_SIGNUP_URL } from "../../../utils/APIUrls";
+import {
+    USER_AUTH_URL,
+    USER_LOGIN_URL,
+    USER_SIGNUP_URL
+} from "../../../utils/APIUrls";
 import {
     USER_AUTH_FAILURE,
     USER_AUTH_SUCCESS,
     USER_LOGIN_FAILURE,
     USER_LOGIN_SUCCESS,
+    USER_LOGOUT,
     USER_REGISTER_FAILURE,
     USER_REGISTER_SUCCESS
 } from "../actionTypes";
 import { UserType } from "../../state/user_states/userStates";
+import { MessageEnumType } from "../../state/cv_states/messageState";
 
 
 export type UserAction = { type: string; payload: UserType };
@@ -25,12 +31,19 @@ export const userLogin = (payload: UserLoginType) => {
                 type: USER_LOGIN_SUCCESS,
                 payload: res.data
             });
+            return {
+                type: MessageEnumType.success,
+                message: "You are loged in.",
+            };
         } catch (err: unknown) {
             localStorage.removeItem("token");
-            // const error = err as AxiosError;
             dispatch({
                 type: USER_LOGIN_FAILURE
             });
+            return {
+                type: MessageEnumType.error,
+                message: "You Email or password is wrong! please try again.",
+            };
         }
 
     };
@@ -47,19 +60,24 @@ export const userSignup = (payload: UserSignupType) => {
                 type: USER_REGISTER_SUCCESS,
                 payload: res.data
             });
+            return {
+                type: MessageEnumType.success,
+                message: "Your account has been created successfully.",
+            };
         } catch (err: unknown) {
             localStorage.removeItem("token");
             // const error = err as AxiosError;
             dispatch({
                 type: USER_REGISTER_FAILURE
             });
+            return {
+                type: MessageEnumType.error,
+                message: "Please try different Email.",
+            };
         }
 
     };
 };
-
-
-
 
 export const userAuth = (payload: { token: string }) => {
     return async function userAuthThunk(dispatch: Dispatch) {
@@ -80,5 +98,13 @@ export const userAuth = (payload: { token: string }) => {
             });
         }
 
+    };
+};
+
+export const userLogout = () => {
+    localStorage.removeItem("token");
+
+    return {
+        type: USER_LOGOUT,
     };
 };

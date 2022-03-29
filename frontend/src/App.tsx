@@ -20,29 +20,36 @@ import Home from "./screens/home";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
   const message = useSelector(
     (state: AppState) => state.message.message
   );
+  const handleExited = () => {
+    dispatch(deleteMessage());
+  };
 
   const checkUserAuth = async () => {
     const token = localStorage.getItem("token");
     if (token) {
       await dispatch(userAuth({ token: token }));
-      setLoading(false);
     }
+    setLoading(false);
+
   };
 
   React.useEffect(() => {
     checkUserAuth();
+
   }, []);
 
   return (
     <>
       <BrowserRouter>
         <Snackbar
-          autoHideDuration={6000}
+          autoHideDuration={5000}
           open={Boolean(message)}
           onClose={()=>dispatch(deleteMessage())}
+          TransitionProps={{ onExited: handleExited }}
         >
         <Alert onClose={()=>dispatch(deleteMessage())} severity={message?.type} sx={{ width: "100%" }}>
           {message?.message}
